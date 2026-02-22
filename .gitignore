@@ -1,0 +1,7 @@
+venv/
+docs/*.txt
+test/__pycache__
+test/sim_build
+test/dump.fst
+test/results.xml
+.vscode/
