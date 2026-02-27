@@ -1,11 +1,15 @@
 SIM ?= verilator
 TOPLEVEL_LANG = verilog
 SRC_DIR = $(PWD)/../rtl
-PROJECT_SOURCES = top.sv alu/alu_pkg.sv alu/ALU.sv
+PROJECT_SOURCES = $(shell find $(SRC_DIR)/ -type f -name '*.sv')
+# .PHONY all:
+# 	@echo $(PROJECT_SOURCES)
+
+
 WAVES = 1
 SIM_BUILD = sim_build
 
-VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
+VERILOG_SOURCES += $(PROJECT_SOURCES)
 COMPILE_ARGS	+= -I$(SRC_DIR)
 
 TOPLEVEL= ALU
