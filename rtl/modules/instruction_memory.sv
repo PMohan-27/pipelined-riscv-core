@@ -4,5 +4,5 @@ module instruction_memory (
 );
     reg [31:0] instruction_mem[0:255];
 
-    assign instruction = instruction_mem[address[31:2]];
+    assign instruction = instruction_mem[address[9:2]];
 endmodule

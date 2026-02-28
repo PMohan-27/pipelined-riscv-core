@@ -12,8 +12,8 @@ SIM_BUILD = sim_build
 VERILOG_SOURCES += $(PROJECT_SOURCES)
 COMPILE_ARGS	+= -I$(SRC_DIR)
 
-TOPLEVEL= ALU
-COCOTB_TEST_MODULES=test_alu
+TOPLEVEL=top
+COCOTB_TEST_MODULES=test
 EXTRA_ARGS += --trace --trace-fst --trace-structs --x-initial unique --x-assign unique
 
 
