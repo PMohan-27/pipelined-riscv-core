@@ -1,15 +1,15 @@
 import alu_pkg::*;
-
+import imm_gen_pkg::*;
 interface control_signals_if;
     logic RegWrite;
-    logic ResultSrc;
+    logic [1:0] ResultSrc;
     logic Branch;
     logic Jump;
     logic DataWE;
     logic [1:0] DataSize;
     logic AluSrcBSel;
     t_alu_op AluOp;
-    logic ImmSel;
+    t_imm ImmSel;
 
     modport control_unit (
         output RegWrite,
@@ -23,6 +23,17 @@ interface control_signals_if;
         output ImmSel
     );
 
+    modport ID_STAGE_OUT (
+        output RegWrite,
+        output ResultSrc,
+        output Branch,
+        output Jump,
+        output DataWE,
+        output DataSize,
+        output AluSrcBSel,
+        output AluOp
+    );
+    
     modport ID_EX_IN (
         input RegWrite,
         input ResultSrc,

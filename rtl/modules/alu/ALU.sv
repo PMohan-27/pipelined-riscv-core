@@ -13,26 +13,26 @@ module ALU(
         result = '0;
         
         unique case(AluOp)
-            ADD:
+            ALU_OP_ADD:
                 begin
                     {CarryFlag, result} = SrcA + SrcB;
                     OverflowFlag = ((SrcA[31] == SrcB[31]) && (SrcA[31] != result[31]));
                 end
-            SUB: 
+            ALU_OP_SUB: 
                 begin
                     {CarryFlag, result} = SrcA - SrcB;
                     CarryFlag = ~CarryFlag;
                     OverflowFlag = ((SrcA[31] != SrcB[31] )&&(SrcA[31] != result[31]));
                 end
-            XOR: result = SrcA^SrcB;
-            OR: result = SrcA|SrcB;
-            AND: result = SrcA&SrcB;
-            SLL: result = SrcA << SrcB[4:0];
-            SRL: result = SrcA >> SrcB[4:0];
-            SRA: result = $signed(SrcA) >>> SrcB[4:0];
-            SLT: result = ($signed(SrcA) < $signed(SrcB)) ? 32'd1 : 32'd0;
-            SLTU: result = (SrcA < SrcB) ? 32'd1 : 32'd0;
-            B_PASS: result = SrcB;
+            ALU_OP_XOR: result = SrcA^SrcB;
+            ALU_OP_OR: result = SrcA|SrcB;
+            ALU_OP_AND: result = SrcA&SrcB;
+            ALU_OP_SLL: result = SrcA << SrcB[4:0];
+            ALU_OP_SRL: result = SrcA >> SrcB[4:0];
+            ALU_OP_SRA: result = $signed(SrcA) >>> SrcB[4:0];
+            ALU_OP_SLT: result = ($signed(SrcA) < $signed(SrcB)) ? 32'd1 : 32'd0;
+            ALU_OP_SLTU: result = (SrcA < SrcB) ? 32'd1 : 32'd0;
+            ALU_OP_B_PASS: result = SrcB;
             default: result = '0;
         endcase
         ZeroFlag = (result == '0); 

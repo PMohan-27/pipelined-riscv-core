@@ -1,3 +1,4 @@
+import alu_pkg::*;
 module ID_EX_PIPELINE_REG (
     input logic clk, rst,
     input logic [4:0] rs1_ID, rs2_ID, rd_ID,
@@ -30,7 +31,7 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.DataWE <= '0;
             ctrl_out.DataSize <= '0;
             ctrl_out.AluSrcBSel  <= '0;
-            ctrl_out.AluOp <= ADD;
+            ctrl_out.AluOp <= ALU_OP_ADD;
         end
         else if(Flush) begin
             RD1_EX <= '0;
@@ -48,7 +49,7 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.DataWE <= '0;
             ctrl_out.DataSize <= '0;
             ctrl_out.AluSrcBSel  <= '0;
-            ctrl_out.AluOp <= ADD;
+            ctrl_out.AluOp <= ALU_OP_ADD;
         end
         else begin
             ctrl_out.RegWrite <= ctrl_in.RegWrite;
