@@ -17,7 +17,7 @@ module top(
         .rst(rst),
         .AluResult_EX(), 
         .PCTarget_EX(),
-        .PCSel_EX(),
+        .PCSrc_EX(),
         .Stall(),
 
         .instruction_IF(instruction_IF), 

@@ -11,8 +11,8 @@ module control_unit(
             OPCODE_R_TYPE: begin 
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = 2'b00;
-                ctrl_out.Branch = 1'b0;
-                ctrl_out.Jump  = 1'b0;
+                ctrl_out.Branch = BR_NONE;
+                ctrl_out.Jump  = JMP_NONE;
                 ctrl_out.DataWE = 1'b0;
                 ctrl_out.DataSize = 2'b00;
                 ctrl_out.AluSrcBSel = 1'b0;

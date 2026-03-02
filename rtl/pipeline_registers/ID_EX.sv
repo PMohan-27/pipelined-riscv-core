@@ -26,8 +26,8 @@ module ID_EX_PIPELINE_REG (
             ImmExt_EX <= '0;
             ctrl_out.RegWrite <= '0;
             ctrl_out.ResultSrc <= '0;
-            ctrl_out.Branch <= '0;
-            ctrl_out.Jump <= '0;
+            ctrl_out.Branch <= BR_NONE;
+            ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataSize <= '0;
             ctrl_out.AluSrcBSel  <= '0;
@@ -44,8 +44,8 @@ module ID_EX_PIPELINE_REG (
             ImmExt_EX <= '0;
             ctrl_out.RegWrite <= '0;
             ctrl_out.ResultSrc <= '0;
-            ctrl_out.Branch <= '0;
-            ctrl_out.Jump <= '0;
+            ctrl_out.Branch <= BR_NONE;
+            ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataSize <= '0;
             ctrl_out.AluSrcBSel  <= '0;

@@ -1,10 +1,11 @@
 import alu_pkg::*;
 import imm_gen_pkg::*;
+import control_unit_pkg::*;
 interface control_signals_if;
     logic RegWrite;
     logic [1:0] ResultSrc;
-    logic Branch;
-    logic Jump;
+    t_branch Branch;
+    t_jump Jump;
     logic DataWE;
     logic [1:0] DataSize;
     logic AluSrcBSel;
