@@ -3,7 +3,7 @@ module pc_select(
     input logic ZeroFlag, OverflowFlag, NegativeFlag, CarryFlag,
     input t_jump Jump_EX, 
     input t_branch Branch_EX,
-    input t_pcsrc PCSrc_EX
+    output t_pcsrc PCSrc_EX
 );
     always_comb begin
         PCSrc_EX = PC_NEXT;

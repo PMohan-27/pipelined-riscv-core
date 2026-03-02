@@ -8,6 +8,10 @@ module top(
     logic [31:0] RD1_ID, RD2_ID;
     logic [31:0] ImmExt_ID;
 
+    logic [31:0] RD1_EX, RD2_EX;
+    logic [4:0] rs1_EX, rs2_EX, rd_EX;
+    logic [31:0] PC_EX, PCPlus4_EX, ImmExt_EX;
+
     control_signals_if ID_CONTROL_SIGNALS();
     control_signals_if EX_CONTROL_SIGNALS();
 
@@ -70,16 +74,35 @@ module top(
         .RD2_ID(RD2_ID),
         .Flush(),
 
-        .RD1_EX(),
-        .RD2_EX(),
-        .rs1_EX(),
-        .rs2_EX(),
-        .rd_EX(),
-        .PC_EX(),
-        .PCPlus4_EX(),
-        .ImmExt_EX(),
+        .RD1_EX(RD1_EX),
+        .RD2_EX(RD2_EX),
+        .rs1_EX(rs1_EX),
+        .rs2_EX(rs2_EX),
+        .rd_EX(rd_EX),
+        .PC_EX(PC_EX),
+        .PCPlus4_EX(PCPlus4_EX),
+        .ImmExt_EX(ImmExt_EX),
 
         .ctrl_in(ID_CONTROL_SIGNALS),
         .ctrl_out(EX_CONTROL_SIGNALS)
+    );
+    
+
+    EX_PIPELINE_STAGE ex_pipeline_stage_inst(
+        .RD1_EX(RD1_EX), 
+        .RD2_EX(RD2_EX),
+        .PC_EX(PC_EX), 
+        .ImmExt_EX(ImmExt_EX),
+        .ForwardAluSrcA_EX(), 
+        .ForwardAluSrcB_EX(),
+        .AluResult_MEM(), 
+        .Result_WB(),
+
+        .AluResult_EX(), 
+        .WriteData_EX(), 
+        .PCTarget_EX(),
+        .PCSrc_EX(),
+
+        .ctrl_in(EX_CONTROL_SIGNALS)
     );
 endmodule
