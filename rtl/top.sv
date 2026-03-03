@@ -9,19 +9,30 @@ module top(
     logic [31:0] ImmExt_ID;
 
     logic [31:0] RD1_EX, RD2_EX;
-    logic [4:0] rs1_EX, rs2_EX, rd_EX;
+    logic [4:0] rs1_EX, rs2_EX;
     logic [31:0] PC_EX, PCPlus4_EX, ImmExt_EX;
+
+    logic [31:0] PCTarget_EX;
+    logic [4:0] rd_EX;
+    logic [31:0] AluResult_EX, WriteData_EX;
+    t_pcsrc PCSrc_EX;
+
+    logic [31:0] PCPlus4_MEM, PCTarget_MEM;
+    logic [4:0] rd_MEM;
+    logic [31:0] AluResult_MEM, WriteData_MEM;
 
     control_signals_if ID_CONTROL_SIGNALS();
     control_signals_if EX_CONTROL_SIGNALS();
+    control_signals_if MEM_CONTROL_SIGNALS();
+
 
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
         .rst(rst),
-        .AluResult_EX(), 
-        .PCTarget_EX(),
-        .PCSrc_EX(),
+        .AluResult_EX(AluResult_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .PCSrc_EX(PCSrc_EX),
         .Stall(),
 
         .instruction_IF(instruction_IF), 
@@ -58,7 +69,7 @@ module top(
         .RD2_ID(RD2_ID),
         .ImmExt_ID(ImmExt_ID),
 
-        .ID_ctrl_out(ID_CONTROL_SIGNALS)
+        .ctrl_out(ID_CONTROL_SIGNALS)
     );
 
     ID_EX_PIPELINE_REG id_ex_pipeline_reg_inst(
@@ -95,14 +106,33 @@ module top(
         .ImmExt_EX(ImmExt_EX),
         .ForwardAluSrcA_EX(), 
         .ForwardAluSrcB_EX(),
-        .AluResult_MEM(), 
+        .AluResult_MEM(AluResult_MEM), 
         .Result_WB(),
 
-        .AluResult_EX(), 
-        .WriteData_EX(), 
-        .PCTarget_EX(),
-        .PCSrc_EX(),
+        .AluResult_EX(AluResult_EX), 
+        .WriteData_EX(WriteData_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .PCSrc_EX(PCSrc_EX),
 
         .ctrl_in(EX_CONTROL_SIGNALS)
+    );
+
+    EX_MEM_PIPELINE_REG ex_mem_pipeline_reg_inst(
+        .clk(clk), 
+        .rst(rst),
+        .PCPlus4_EX(PCPlus4_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .rd_EX(rd_EX),
+        .AluResult_EX(AluResult_EX), 
+        .WriteData_EX(WriteData_EX),
+
+        .PCPlus4_MEM(PCPlus4_MEM), 
+        .PCTarget_MEM(PCTarget_MEM),
+        .rd_MEM(rd_MEM),
+        .AluResult_MEM(AluResult_MEM), 
+        .WriteData_MEM(WriteData_MEM),
+
+        .ctrl_in(EX_CONTROL_SIGNALS),
+        .ctrl_out(MEM_CONTROL_SIGNALS)
     );
 endmodule

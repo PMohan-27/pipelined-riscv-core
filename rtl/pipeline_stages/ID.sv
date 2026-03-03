@@ -8,7 +8,7 @@ module ID_PIPELINE_STAGE(
     output logic [4:0] rs1_ID, rs2_ID, rd_ID,
     output logic [31:0] RD1_ID, RD2_ID, ImmExt_ID,
     
-    control_signals_if.ID_STAGE_OUT ID_ctrl_out
+    control_signals_if.ID_STAGE_OUT ctrl_out
 
  );
     control_signals_if control_signals();
