@@ -10,11 +10,11 @@ module control_unit(
         unique case(opcode) 
             OPCODE_R_TYPE: begin 
                 ctrl_out.RegWrite = 1'b1;
-                ctrl_out.ResultSrc = 2'b00;
+                ctrl_out.ResultSrc = ALU_RESULT;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump  = JMP_NONE;
                 ctrl_out.DataWE = 1'b0;
-                ctrl_out.DataSize = 2'b00;
+                ctrl_out.DataType = WORD;
                 ctrl_out.AluSrcBSel = 1'b0;
                 case({funct7[5],funct3}) 
                     {FUNCT7_STD, FUNCT3_ADD_SUB}: ctrl_out.AluOp = ALU_OP_ADD;

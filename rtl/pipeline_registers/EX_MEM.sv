@@ -19,9 +19,9 @@ module EX_MEM_PIPELINE_REG(
             AluResult_MEM <= '0;
             WriteData_MEM <= '0;
             ctrl_out.RegWrite <= '0;
-            ctrl_out.ResultSrc <= '0;
+            ctrl_out.ResultSrc <= ALU_RESULT;
             ctrl_out.DataWE <= '0;
-            ctrl_out.DataSize <= '0;
+            ctrl_out.DataType <= WORD;
         end else begin
             PCPlus4_MEM <= PCPlus4_EX;
             PCTarget_MEM <= PCTarget_EX;
@@ -31,7 +31,7 @@ module EX_MEM_PIPELINE_REG(
             ctrl_out.RegWrite <= ctrl_in.RegWrite;
             ctrl_out.ResultSrc <= ctrl_in.ResultSrc;
             ctrl_out.DataWE <= ctrl_in.DataWE;
-            ctrl_out.DataSize <= ctrl_in.DataSize;
+            ctrl_out.DataType <= ctrl_in.DataType;
         end
     end
 

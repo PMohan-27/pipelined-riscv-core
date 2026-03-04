@@ -20,11 +20,17 @@ module top(
     logic [31:0] PCPlus4_MEM, PCTarget_MEM;
     logic [4:0] rd_MEM;
     logic [31:0] AluResult_MEM, WriteData_MEM;
+    logic [31:0] ReadData_MEM;
+
+    logic [31:0] AluResult_WB, ReadData_WB;
+    logic [4:0] rd_WB;
+    logic [31:0] PCTarget_WB, PCPlus4_WB;
+    logic [31:0] Result_WB;
 
     control_signals_if ID_CONTROL_SIGNALS();
     control_signals_if EX_CONTROL_SIGNALS();
     control_signals_if MEM_CONTROL_SIGNALS();
-
+    control_signals_if WB_CONTROL_SIGNALS();
 
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
@@ -58,9 +64,9 @@ module top(
         .clk(clk),
         .rst(rst),
         .instruction_ID(instruction_ID),
-        .rd_WB(),
-        .RegWrite_WB(),
-        .Result_WB(),
+        .rd_WB(rd_WB),
+        .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
+        .Result_WB(Result_WB),
 
         .rs1_ID(rs1_ID),
         .rs2_ID(rs2_ID),
@@ -107,7 +113,7 @@ module top(
         .ForwardAluSrcA_EX(), 
         .ForwardAluSrcB_EX(),
         .AluResult_MEM(AluResult_MEM), 
-        .Result_WB(),
+        .Result_WB(Result_WB),
 
         .AluResult_EX(AluResult_EX), 
         .WriteData_EX(WriteData_EX), 
@@ -135,4 +141,46 @@ module top(
         .ctrl_in(EX_CONTROL_SIGNALS),
         .ctrl_out(MEM_CONTROL_SIGNALS)
     );
+
+    MEM_PIPELINE_STAGE mem_pipeline_stage_inst(
+        .clk(clk), 
+        .rst(rst),
+        .AluResult_MEM(AluResult_MEM),
+        .WriteData_MEM(WriteData_MEM),
+        
+        .ReadData_MEM(ReadData_MEM),
+    
+        .ctrl_in(MEM_CONTROL_SIGNALS)
+    );
+
+    MEM_WB_PIPELINE_REG mem_wb_pipeline_reg_inst(
+        .clk(clk), 
+        .rst(rst),
+        .AluResult_MEM(AluResult_MEM), 
+        .ReadData_MEM(ReadData_MEM),
+        .rd_MEM(rd_MEM),
+        .PCTarget_MEM(PCTarget_MEM), 
+        .PCPlus4_MEM(PCPlus4_MEM),
+
+        .AluResult_WB(AluResult_WB), 
+        .ReadData_WB(ReadData_WB),
+        .rd_WB(rd_WB),
+        .PCTarget_WB(PCTarget_WB), 
+        .PCPlus4_WB(PCPlus4_WB),
+
+        .ctrl_in(MEM_CONTROL_SIGNALS),
+        .ctrl_out(WB_CONTROL_SIGNALS)
+    );
+
+    WB_PIPELINE_STAGE wb_pipeline_stage_inst(
+        .AluResult_WB(AluResult_WB), 
+        .ReadData_WB(ReadData_WB), 
+        .PCTarget_WB(PCTarget_WB), 
+        .PCPlus4_WB(PCPlus4_WB),
+
+        .Result_WB(Result_WB),
+
+        .ctrl_in(WB_CONTROL_SIGNALS)
+    );
+
 endmodule

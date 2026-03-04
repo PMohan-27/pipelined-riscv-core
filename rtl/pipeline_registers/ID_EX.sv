@@ -25,11 +25,11 @@ module ID_EX_PIPELINE_REG (
             PCPlus4_EX <= '0;
             ImmExt_EX <= '0;
             ctrl_out.RegWrite <= '0;
-            ctrl_out.ResultSrc <= '0;
+            ctrl_out.ResultSrc <= ALU_RESULT;
             ctrl_out.Branch <= BR_NONE;
             ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
-            ctrl_out.DataSize <= '0;
+            ctrl_out.DataType <= WORD;
             ctrl_out.AluSrcBSel  <= '0;
             ctrl_out.AluOp <= ALU_OP_ADD;
         end
@@ -43,11 +43,11 @@ module ID_EX_PIPELINE_REG (
             PCPlus4_EX <= '0;
             ImmExt_EX <= '0;
             ctrl_out.RegWrite <= '0;
-            ctrl_out.ResultSrc <= '0;
+            ctrl_out.ResultSrc <= ALU_RESULT;
             ctrl_out.Branch <= BR_NONE;
             ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
-            ctrl_out.DataSize <= '0;
+            ctrl_out.DataType <= WORD;
             ctrl_out.AluSrcBSel  <= '0;
             ctrl_out.AluOp <= ALU_OP_ADD;
         end
@@ -57,7 +57,7 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.Branch <= ctrl_in.Branch;
             ctrl_out.Jump <= ctrl_in.Jump;
             ctrl_out.DataWE <= ctrl_in.DataWE;
-            ctrl_out.DataSize <= ctrl_in.DataSize;
+            ctrl_out.DataType <= ctrl_in.DataType;
             ctrl_out.AluSrcBSel <= ctrl_in.AluSrcBSel;
             ctrl_out.AluOp <= ctrl_in.AluOp;
             RD1_EX <= RD1_ID;

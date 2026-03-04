@@ -3,11 +3,11 @@ import imm_gen_pkg::*;
 import control_unit_pkg::*;
 interface control_signals_if;
     logic RegWrite;
-    logic [1:0] ResultSrc;
+    t_result_src ResultSrc;
     t_branch Branch;
     t_jump Jump;
     logic DataWE;
-    logic [1:0] DataSize;
+    t_data_type DataType;
     logic AluSrcBSel;
     t_alu_op AluOp;
     t_imm ImmSel;
@@ -18,7 +18,7 @@ interface control_signals_if;
         output Branch,
         output Jump,
         output DataWE,
-        output DataSize,
+        output DataType,
         output AluSrcBSel,
         output AluOp,
         output ImmSel
@@ -30,7 +30,7 @@ interface control_signals_if;
         output Branch,
         output Jump,
         output DataWE,
-        output DataSize,
+        output DataType,
         output AluSrcBSel,
         output AluOp
     );
@@ -41,7 +41,7 @@ interface control_signals_if;
         input Branch,
         input Jump,
         input DataWE,
-        input DataSize,
+        input DataType,
         input AluSrcBSel,
         input AluOp    
     );
@@ -52,7 +52,7 @@ interface control_signals_if;
         output Branch,
         output Jump,
         output DataWE,
-        output DataSize,
+        output DataType,
         output AluSrcBSel,
         output AluOp
     );
@@ -68,19 +68,19 @@ interface control_signals_if;
         input RegWrite,
         input ResultSrc,
         input DataWE,
-        input DataSize
+        input DataType
     );
 
     modport EX_MEM_OUT(
         output RegWrite,
         output ResultSrc,
         output DataWE,
-        output DataSize
+        output DataType
     );
 
     modport MEM_STAGE_IN (
         input DataWE,
-        input DataSize
+        input DataType
     );
 
     modport MEM_WB_IN(
@@ -93,7 +93,6 @@ interface control_signals_if;
         output ResultSrc
     );
     modport WB_STAGE_IN(
-        input RegWrite,
         input ResultSrc
     );
 endinterface

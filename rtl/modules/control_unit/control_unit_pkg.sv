@@ -62,9 +62,25 @@ package control_unit_pkg;
         JMP_JALR
     } t_jump;
 
+    typedef enum logic [2:0] {
+        WORD,
+        HALFWORD,
+        BYTE,
+        U_HALFWORD,
+        U_BYTE
+    } t_data_type;
+    
     typedef enum logic [1:0] {
         PC_NEXT,       
         PC_IMM,
         PC_RS1_IMM       
     } t_pcsrc;
+
+    typedef enum logic [1:0] {
+        ALU_RESULT,
+        DATA_MEM_RESULT,
+        PC_TARGET_RESULT,
+        PC_PLUS4_RESULT     
+    } t_result_src;
+
 endpackage

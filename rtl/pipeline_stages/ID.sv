@@ -12,7 +12,6 @@ module ID_PIPELINE_STAGE(
 
  );
     control_signals_if control_signals();
-    logic [4:0] rs1, rs2 ,rd;
     logic [6:0] opcode;
     logic [6:0] funct7;
     logic [2:0] funct3;
@@ -22,9 +21,17 @@ module ID_PIPELINE_STAGE(
         opcode = instruction_ID[6:0];
         funct7 = instruction_ID[31:25];
         funct3 = instruction_ID[14:12];
-        rs1 = instruction_ID[19:15];
-        rs2 = instruction_ID[24:20];
-        rd = instruction_ID[11:7];
+        rs1_ID = instruction_ID[19:15];
+        rs2_ID = instruction_ID[24:20];
+        rd_ID = instruction_ID[11:7];
+        ctrl_out.RegWrite = control_signals.RegWrite;
+        ctrl_out.ResultSrc = control_signals.ResultSrc;
+        ctrl_out.Branch = control_signals.Branch;
+        ctrl_out.Jump = control_signals.Jump;
+        ctrl_out.DataWE = control_signals.DataWE;
+        ctrl_out.DataType = control_signals.DataType;
+        ctrl_out.AluSrcBSel = control_signals.AluSrcBSel;
+        ctrl_out.AluOp = control_signals.AluOp;
     end
 
     control_unit control_unit_inst(
@@ -37,8 +44,8 @@ module ID_PIPELINE_STAGE(
     reg_file register_file_inst(
         .clk (clk),
         .rst (rst),
-        .A1  (rs1),
-        .A2  (rs2),
+        .A1  (rs1_ID),
+        .A2  (rs2_ID),
         .A3  (rd_WB),
         .WD3 (Result_WB),
         .WE3 (RegWrite_WB),
