@@ -6,8 +6,10 @@ from cocotb.triggers import RisingEdge
 async def test(dut):
     imem = dut.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
    
-    imem[0].value = 0x403100b3 #sub x1, x2, x3
-    imem[1].value= 0x0062c233#xor x4, x5, x6
+    imem[0].value = 0x00a10113  # addi x2, x2, 10
+    imem[1].value = 0x00108093  # addi x1, x1, 1
+    imem[2].value = 0xfe1154e3  # bge x2, x1, loop
+    imem[3].value = 0x03110293  # addi x5, x2, 49
     
     cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
 
@@ -18,16 +20,16 @@ async def test(dut):
 
     regs = dut.id_pipeline_stage_inst.register_file_inst.registers
 
-    regs[2].value = 10   # x2
-    regs[3].value = 3    # x3 
-    regs[5].value = 0xFF # x5
-    regs[6].value = 0x0F # x6  
+    # regs[2].value = 10   # x2
+    # regs[3].value = 3    # x3 
+    # regs[5].value = 0xFF # x5
+    # regs[6].value = 0x0F # x6  
 
     await RisingEdge(dut.clk)
 
     await RisingEdge(dut.clk)
     
-    for _ in range(20):
+    for _ in range(400):
         await RisingEdge(dut.clk)
 
     dump_regs(dut)

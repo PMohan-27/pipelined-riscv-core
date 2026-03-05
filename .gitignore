@@ -5,3 +5,5 @@ test/sim_build
 test/dump.fst
 test/results.xml
 .vscode/
+test/regdump.txt
+test/assembly
