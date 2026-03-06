@@ -32,6 +32,7 @@ module top(
     control_signals_if MEM_CONTROL_SIGNALS();
     control_signals_if WB_CONTROL_SIGNALS();
 
+    logic Flush_EX, Flush_ID, Stall_IF, Stall_ID;
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
@@ -39,7 +40,7 @@ module top(
         .AluResult_EX(AluResult_EX), 
         .PCTarget_EX(PCTarget_EX),
         .PCSrc_EX(PCSrc_EX),
-        .Stall(),
+        .Stall(1'b0),
 
         .instruction_IF(instruction_IF), 
         .PC_IF(PC_IF), 
@@ -52,8 +53,8 @@ module top(
         .instruction_IF(instruction_IF),
         .PC_IF(PC_IF),
         .PCPlus4_IF(PCPlus4_IF),
-        .Stall(),
-        .Flush(),
+        .Stall(1'b0),
+        .Flush(Flush_ID),
 
         .instruction_ID(instruction_ID),
         .PC_ID(PC_ID),
@@ -89,7 +90,7 @@ module top(
         .PCPlus4_ID(PCPlus4_ID),
         .RD1_ID(RD1_ID),
         .RD2_ID(RD2_ID),
-        .Flush(),
+        .Flush(Flush_EX),
 
         .RD1_EX(RD1_EX),
         .RD2_EX(RD2_EX),
@@ -181,6 +182,24 @@ module top(
         .Result_WB(Result_WB),
 
         .ctrl_in(WB_CONTROL_SIGNALS)
+    );
+
+    hazard_unit hazard_unit_inst(
+        .rs1_ID(rs1_ID),
+        .rs2_ID(rs2_ID),
+        .rs1_EX(rs1_EX), 
+        .rs2_EX(rs2_EX),
+        .ResultSrc_EX(EX_CONTROL_SIGNALS.ResultSrc),
+        .PCSrc_EX(PCSrc_EX),
+        .rd_MEM(rd_MEM),
+        .rd_WB(rd_WB),
+        .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
+        .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
+
+        .Stall_IF(Stall_IF),
+        .Stall_ID(Stall_ID), 
+        .Flush_ID(Flush_ID),
+        .Flush_EX(Flush_EX)
     );
 
 endmodule
