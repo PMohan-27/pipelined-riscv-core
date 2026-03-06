@@ -33,6 +33,7 @@ module top(
     control_signals_if WB_CONTROL_SIGNALS();
 
     logic Flush_EX, Flush_ID, Stall_IF, Stall_ID;
+    logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
@@ -40,7 +41,7 @@ module top(
         .AluResult_EX(AluResult_EX), 
         .PCTarget_EX(PCTarget_EX),
         .PCSrc_EX(PCSrc_EX),
-        .Stall(1'b0),
+        .Stall(Stall_IF),
 
         .instruction_IF(instruction_IF), 
         .PC_IF(PC_IF), 
@@ -53,7 +54,7 @@ module top(
         .instruction_IF(instruction_IF),
         .PC_IF(PC_IF),
         .PCPlus4_IF(PCPlus4_IF),
-        .Stall(1'b0),
+        .Stall(Stall_ID),
         .Flush(Flush_ID),
 
         .instruction_ID(instruction_ID),
@@ -111,8 +112,8 @@ module top(
         .RD2_EX(RD2_EX),
         .PC_EX(PC_EX), 
         .ImmExt_EX(ImmExt_EX),
-        .ForwardAluSrcA_EX(), 
-        .ForwardAluSrcB_EX(),
+        .ForwardAluSrcA_EX(ForwardAluSrcA_EX), 
+        .ForwardAluSrcB_EX(ForwardAluSrcB_EX),
         .AluResult_MEM(AluResult_MEM), 
         .Result_WB(Result_WB),
 
@@ -193,13 +194,16 @@ module top(
         .PCSrc_EX(PCSrc_EX),
         .rd_MEM(rd_MEM),
         .rd_WB(rd_WB),
+        .rd_EX(rd_EX),
         .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
 
         .Stall_IF(Stall_IF),
         .Stall_ID(Stall_ID), 
         .Flush_ID(Flush_ID),
-        .Flush_EX(Flush_EX)
+        .Flush_EX(Flush_EX),
+        .ForwardAluSrcA_EX(ForwardAluSrcA_EX),
+        .ForwardAluSrcB_EX(ForwardAluSrcB_EX)
     );
 
 endmodule
