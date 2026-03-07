@@ -1,3 +1,3 @@
 # CPU Architechure Info
 
-![alt text](Pipelined_riscv.png)
+![CPU Diagram](Pipelined_riscv.png)

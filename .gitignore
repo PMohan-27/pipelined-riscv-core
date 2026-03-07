@@ -1,9 +1,8 @@
 venv/
 docs/*.txt
-test/__pycache__
-test/sim_build
-test/dump.fst
-test/results.xml
+__pycache__
+sim_build
+dump.fst
+results.xml
 .vscode/
-test/regdump.txt
-test/assembly
+regdump.txt
