@@ -30,7 +30,8 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataType <= WORD;
-            ctrl_out.AluSrcBSel  <= '0;
+            ctrl_out.AluSrcBSel <= '0;
+            ctrl_out.AluSrcASel  <= '0;
             ctrl_out.AluOp <= ALU_OP_ADD;
         end
         else if(Flush) begin
@@ -48,7 +49,8 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.Jump <= JMP_NONE;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataType <= WORD;
-            ctrl_out.AluSrcBSel  <= '0;
+            ctrl_out.AluSrcBSel <= '0;
+            ctrl_out.AluSrcASel  <= '0;
             ctrl_out.AluOp <= ALU_OP_ADD;
         end
         else begin
@@ -59,6 +61,7 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.DataWE <= ctrl_in.DataWE;
             ctrl_out.DataType <= ctrl_in.DataType;
             ctrl_out.AluSrcBSel <= ctrl_in.AluSrcBSel;
+            ctrl_out.AluSrcASel <= ctrl_in.AluSrcASel;
             ctrl_out.AluOp <= ctrl_in.AluOp;
             RD1_EX <= RD1_ID;
             RD2_EX <= RD2_ID;

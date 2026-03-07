@@ -9,6 +9,7 @@ interface control_signals_if;
     logic DataWE;
     t_data_type DataType;
     logic AluSrcBSel;
+    logic AluSrcASel;
     t_alu_op AluOp;
     t_imm ImmSel;
 
@@ -20,6 +21,7 @@ interface control_signals_if;
         output DataWE,
         output DataType,
         output AluSrcBSel,
+        output AluSrcASel,
         output AluOp,
         output ImmSel
     );
@@ -32,6 +34,7 @@ interface control_signals_if;
         output DataWE,
         output DataType,
         output AluSrcBSel,
+        output AluSrcASel,
         output AluOp
     );
     
@@ -43,6 +46,7 @@ interface control_signals_if;
         input DataWE,
         input DataType,
         input AluSrcBSel,
+        input AluSrcASel,
         input AluOp    
     );
 
@@ -54,6 +58,7 @@ interface control_signals_if;
         output DataWE,
         output DataType,
         output AluSrcBSel,
+        output AluSrcASel,
         output AluOp
     );
 
@@ -61,6 +66,7 @@ interface control_signals_if;
         input Branch,
         input Jump,
         input AluSrcBSel,
+        input AluSrcASel,
         input AluOp
     );
 

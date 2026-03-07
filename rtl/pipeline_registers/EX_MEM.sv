@@ -4,7 +4,7 @@ module EX_MEM_PIPELINE_REG(
     input logic [4:0] rd_EX,
     input logic [31:0] AluResult_EX, WriteData_EX,
 
-    output logic [31:0] PCPlus4_MEM, PCTarget_MEM,
+    output logic [31:0] PCPlus4_MEM,
     output logic [4:0] rd_MEM,
     output logic [31:0] AluResult_MEM, WriteData_MEM,
 
@@ -14,7 +14,6 @@ module EX_MEM_PIPELINE_REG(
     always_ff @(posedge clk) begin
         if(rst) begin
             PCPlus4_MEM <= '0;
-            PCTarget_MEM <= '0;
             rd_MEM <= '0;
             AluResult_MEM <= '0;
             WriteData_MEM <= '0;
@@ -24,7 +23,6 @@ module EX_MEM_PIPELINE_REG(
             ctrl_out.DataType <= WORD;
         end else begin
             PCPlus4_MEM <= PCPlus4_EX;
-            PCTarget_MEM <= PCTarget_EX;
             rd_MEM <= rd_EX;
             AluResult_MEM <= AluResult_EX;
             WriteData_MEM <= WriteData_EX;

@@ -19,33 +19,36 @@ async def test(dut):
 
     await RisingEdge(dut.clk)
     
-    for _ in range(10000):
+    dmem = dut.mem_pipeline_stage_inst.data_memory_inst
+
+    for _ in range(400):
         await RisingEdge(dut.clk)
-    
+
+            
     dump_regs(dut)
     dump_instrs(dut)
     dump_data_mem(dut)
 
-def dump_regs(dut, filename="regdump.txt"):
+def dump_regs(dut, filename="dumps/regdump.txt"):
     regs = dut.id_pipeline_stage_inst.register_file_inst.registers
     with open(filename, "w") as f:
         for i in range(32):
             val = regs[i].value.integer
             f.write(f"x{i:<2} = {val:#010x}  ({val})\n")
 
-def dump_instrs(dut, filename="instrdump.txt"):
+def dump_instrs(dut, filename="dumps/instrdump.txt"):
     with open(filename, "w") as f:
         imem = dut.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
         for i in range(256):
             val = imem[i].value.integer
             f.write(f"imem[{i}] = {val:#010x}  ({val})\n")
 
-def dump_data_mem(dut, filename="dmemdump.txt"):
+def dump_data_mem(dut, filename="dumps/dmemdump.txt"):
     with open(filename, "w") as f:
         dmem = dut.mem_pipeline_stage_inst.data_memory_inst.memory
         for i in range(256):
             val = dmem[i].value.integer
-            f.write(f"imem[{i}] = {val:#010x}  ({val})\n")
+            f.write(f"dmem[{i}] = {val:#010x}  ({val})\n")
 
 def load_instructions(imem):
     with open('assembly/test.hex') as f:

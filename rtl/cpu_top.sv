@@ -17,14 +17,14 @@ module top(
     logic [31:0] AluResult_EX, WriteData_EX;
     t_pcsrc PCSrc_EX;
 
-    logic [31:0] PCPlus4_MEM, PCTarget_MEM;
+    logic [31:0] PCPlus4_MEM;
     logic [4:0] rd_MEM;
     logic [31:0] AluResult_MEM, WriteData_MEM;
     logic [31:0] ReadData_MEM;
 
     logic [31:0] AluResult_WB, ReadData_WB;
     logic [4:0] rd_WB;
-    logic [31:0] PCTarget_WB, PCPlus4_WB;
+    logic [31:0] PCPlus4_WB;
     logic [31:0] Result_WB;
 
     control_signals_if ID_CONTROL_SIGNALS();
@@ -135,7 +135,6 @@ module top(
         .WriteData_EX(WriteData_EX),
 
         .PCPlus4_MEM(PCPlus4_MEM), 
-        .PCTarget_MEM(PCTarget_MEM),
         .rd_MEM(rd_MEM),
         .AluResult_MEM(AluResult_MEM), 
         .WriteData_MEM(WriteData_MEM),
@@ -161,13 +160,11 @@ module top(
         .AluResult_MEM(AluResult_MEM), 
         .ReadData_MEM(ReadData_MEM),
         .rd_MEM(rd_MEM),
-        .PCTarget_MEM(PCTarget_MEM), 
         .PCPlus4_MEM(PCPlus4_MEM),
 
         .AluResult_WB(AluResult_WB), 
         .ReadData_WB(ReadData_WB),
         .rd_WB(rd_WB),
-        .PCTarget_WB(PCTarget_WB), 
         .PCPlus4_WB(PCPlus4_WB),
 
         .ctrl_in(MEM_CONTROL_SIGNALS),
@@ -177,7 +174,6 @@ module top(
     WB_PIPELINE_STAGE wb_pipeline_stage_inst(
         .AluResult_WB(AluResult_WB), 
         .ReadData_WB(ReadData_WB), 
-        .PCTarget_WB(PCTarget_WB), 
         .PCPlus4_WB(PCPlus4_WB),
 
         .Result_WB(Result_WB),

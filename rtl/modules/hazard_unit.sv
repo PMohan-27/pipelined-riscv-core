@@ -26,23 +26,26 @@ module hazard_unit(
             Flush_EX = 1'b1;
         end
 
-       if(ResultSrc_EX == DATA_MEM_RESULT && (rd_EX == rs1_ID || rd_EX == rs2_ID)) begin
+       if(ResultSrc_EX == DATA_MEM_RESULT && (rd_EX == rs1_ID || rd_EX == rs2_ID) && rd_EX != 5'b0) begin
             Stall_IF = 1'b1;
             Stall_ID = 1'b1;
             Flush_EX = 1'b1;
         end
 
-        if(RegWrite_WB && rd_WB != 5'b0 && rd_WB == rs1_EX) begin
+        
+        
+        if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs1_EX) begin
+            ForwardAluSrcA_EX = 2'b10;
+        end else if(RegWrite_WB && rd_WB != 5'b0 && rd_WB == rs1_EX) begin
             ForwardAluSrcA_EX = 2'b01;
         end
-        if(RegWrite_WB && rd_WB != 5'b0 && rd_WB == rs2_EX) begin
+
+        if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs2_EX) begin
+            ForwardAluSrcB_EX = 2'b10;
+        end else if(RegWrite_WB && rd_WB != 5'b0 && rd_WB == rs2_EX) begin
             ForwardAluSrcB_EX = 2'b01;
         end
         
-        if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs1_EX)
-            ForwardAluSrcA_EX = 2'b10;
-        if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs2_EX)
-            ForwardAluSrcB_EX = 2'b10;
     end
 
 endmodule

@@ -30,6 +30,7 @@ module ID_PIPELINE_STAGE(
         ctrl_out.Jump = control_signals.Jump;
         ctrl_out.DataWE = control_signals.DataWE;
         ctrl_out.DataType = control_signals.DataType;
+        ctrl_out.AluSrcASel = control_signals.AluSrcASel;
         ctrl_out.AluSrcBSel = control_signals.AluSrcBSel;
         ctrl_out.AluOp = control_signals.AluOp;
     end

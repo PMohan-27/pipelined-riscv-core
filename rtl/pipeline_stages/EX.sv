@@ -24,13 +24,16 @@ module EX_PIPELINE_STAGE(
     logic [31:0] AluSrcA, AluSrcB;
 
     always_comb begin
-        
-        case(ForwardAluSrcA_EX)
-            2'b00: AluSrcA = RD1_EX;
-            2'b01: AluSrcA = Result_WB;
-            2'b10: AluSrcA = AluResult_MEM;
-            default: AluSrcA = RD1_EX;
-        endcase
+        if(ctrl_in.AluSrcASel == 1'b0) begin
+            case(ForwardAluSrcA_EX)
+                2'b00: AluSrcA = RD1_EX;
+                2'b01: AluSrcA = Result_WB;
+                2'b10: AluSrcA = AluResult_MEM;
+                default: AluSrcA = RD1_EX;
+            endcase
+        end else begin
+            AluSrcA = PC_EX;
+        end
         if(ctrl_in.AluSrcBSel == 1'b0) begin
             case(ForwardAluSrcB_EX) 
                 2'b00: AluSrcB = RD2_EX;
@@ -38,8 +41,7 @@ module EX_PIPELINE_STAGE(
                 2'b10: AluSrcB = AluResult_MEM;
                 default: AluSrcB = RD2_EX;
             endcase
-        end
-        else begin
+        end else begin
             AluSrcB = ImmExt_EX;
         end
     end
@@ -56,5 +58,13 @@ module EX_PIPELINE_STAGE(
     );
     always_comb begin
         PCTarget_EX = PC_EX + ImmExt_EX; 
+
+        case(ForwardAluSrcB_EX) 
+            2'b00: WriteData_EX = RD2_EX;
+            2'b01: WriteData_EX = Result_WB;
+            2'b10: WriteData_EX= AluResult_MEM;
+            default: WriteData_EX= RD2_EX;
+        endcase
+    
     end
 endmodule

@@ -9,8 +9,10 @@ module reg_file(
     reg [31:0] registers [0:31];
 
     // since x0 is set to 0 
-    assign RD1 = (A1 == 5'b0) ? 32'b0 : registers[A1];
-    assign RD2 = (A2 == 5'b0) ? 32'b0 : registers[A2];
+    assign RD1 = (A1 == 5'b0) ? 32'b0 : 
+             (WE3 && A3 == A1 && A3 != 5'b0) ? WD3 : registers[A1];
+    assign RD2 = (A2 == 5'b0) ? 32'b0 : 
+             (WE3 && A3 == A2 && A3 != 5'b0) ? WD3 : registers[A2];
     integer i = 0;
 
     always_ff @(posedge clk or posedge rst)begin

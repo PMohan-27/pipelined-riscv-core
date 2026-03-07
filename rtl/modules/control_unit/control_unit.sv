@@ -15,6 +15,7 @@ module control_unit(
                 ctrl_out.Jump  = JMP_NONE;
                 ctrl_out.DataWE = 1'b0;
                 ctrl_out.DataType = WORD;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b0;
                 ctrl_out.ImmSel = I_IMM;
                 case({funct7[5],funct3}) 
@@ -35,6 +36,7 @@ module control_unit(
                 ctrl_out.ImmSel = I_IMM;
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = ALU_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump  = JMP_NONE;
@@ -56,6 +58,7 @@ module control_unit(
                 ctrl_out.ImmSel = I_IMM;
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = DATA_MEM_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_NONE;
@@ -74,6 +77,7 @@ module control_unit(
                 ctrl_out.ImmSel = S_IMM;
                 ctrl_out.RegWrite = 1'b0;
                 ctrl_out.ResultSrc = DATA_MEM_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_NONE;
@@ -90,6 +94,7 @@ module control_unit(
                 ctrl_out.ImmSel = B_IMM;
                 ctrl_out.RegWrite = 1'b0;
                 ctrl_out.ResultSrc = ALU_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b0;
                 ctrl_out.Jump = JMP_NONE;
                 ctrl_out.DataWE = 1'b0;
@@ -109,6 +114,7 @@ module control_unit(
                 ctrl_out.ImmSel = J_IMM;
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = PC_PLUS4_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b0;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_JAL;
@@ -120,6 +126,7 @@ module control_unit(
                 ctrl_out.ImmSel = I_IMM;
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = PC_PLUS4_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_JALR;
@@ -131,6 +138,7 @@ module control_unit(
                 ctrl_out.ImmSel = U_IMM;
                 ctrl_out.RegWrite = 1'b1;
                 ctrl_out.ResultSrc = ALU_RESULT;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_NONE;
@@ -141,7 +149,8 @@ module control_unit(
             OPCODE_AUIPC: begin
                 ctrl_out.ImmSel = U_IMM;
                 ctrl_out.RegWrite = 1'b1;
-                ctrl_out.ResultSrc = PC_TARGET_RESULT;
+                ctrl_out.ResultSrc = ALU_RESULT;
+                ctrl_out.AluSrcASel = 1'b1;
                 ctrl_out.AluSrcBSel = 1'b1;
                 ctrl_out.Branch = BR_NONE;
                 ctrl_out.Jump = JMP_NONE;

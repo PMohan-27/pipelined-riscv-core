@@ -79,7 +79,6 @@ package control_unit_pkg;
     typedef enum logic [1:0] {
         ALU_RESULT,
         DATA_MEM_RESULT,
-        PC_TARGET_RESULT,
         PC_PLUS4_RESULT     
     } t_result_src;
 
