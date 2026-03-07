@@ -6,3 +6,8 @@ dump.fst
 results.xml
 .vscode/
 regdump.txt
+test.elf
+test.hex
+test.o
+dmemdump.txt
+instrdump.txt

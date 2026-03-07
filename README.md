@@ -6,8 +6,7 @@ A 5-stage pipelined RV32I core , targeting the Tang Nano 20K FPGA.
 
 1. ~~Build a working single-cycle RV32I core~~
 2. ~~Add 5-stage pipeline~~
-3. Extend with RV32M (multiply/divide)
-4. Explore other ISA extensions
+3. Integrate with SoC
 
 ## Current Status
 

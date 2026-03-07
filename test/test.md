@@ -25,7 +25,11 @@ make
 
 ### Top Level Tests
 
+You can edit [test.s](toplevel_test/assembly/test.s)  and run `bash mem.sh` to run RV32I assembly on the cpu.
+Then run:
+
 ```bash
 cd test/toplevel_test
 make
 ```
+

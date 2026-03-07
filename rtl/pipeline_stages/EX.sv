@@ -56,13 +56,5 @@ module EX_PIPELINE_STAGE(
     );
     always_comb begin
         PCTarget_EX = PC_EX + ImmExt_EX; 
-
-        case(ForwardAluSrcB_EX) 
-            2'b00: WriteData_EX = RD2_EX;
-            2'b01: WriteData_EX = Result_WB;
-            2'b10: WriteData_EX= AluResult_MEM;
-            default: WriteData_EX= RD2_EX;
-        endcase
-    
     end
 endmodule
