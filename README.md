@@ -17,7 +17,7 @@ A 5-stage pipelined RV32I core , targeting the Tang Nano 20K FPGA.
 
 ## Project Structure
 
-```
+```shell
 rtl/        - Verilog source files
 test/       - Cocotb tests
 docs/       - Documentation and diagrams
@@ -28,6 +28,7 @@ docs/       - Documentation and diagrams
 **Pipeline Stages:** IF → ID → EX → MEM → WB
 
 **Hazard Handling:**
+
 - Data hazards: forwarding from EX/MEM stages
 - Load-use hazards: stall
 - Control hazards: flush on branch/jump
