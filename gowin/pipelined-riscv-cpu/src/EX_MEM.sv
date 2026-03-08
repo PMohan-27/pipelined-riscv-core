@@ -1,13 +1,11 @@
 import control_unit_pkg::*;
 module EX_MEM_PIPELINE_REG(
     input logic clk, rst,
-    input t_pcsrc PCSrc_EX,
     input logic [31:0] PCPlus4_EX, PCTarget_EX,
     input logic [4:0] rd_EX,
     input logic [31:0] AluResult_EX, WriteData_EX,
 
-    output t_pcsrc PCSrc_MEM,
-    output logic [31:0] PCPlus4_MEM, PCTarget_MEM,
+    output logic [31:0] PCPlus4_MEM,
     output logic [4:0] rd_MEM,
     output logic [31:0] AluResult_MEM, WriteData_MEM,
 
@@ -24,15 +22,11 @@ module EX_MEM_PIPELINE_REG(
             ctrl_out.ResultSrc <= ALU_RESULT;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataType <= WORD;
-            PCTarget_MEM <= '0;
-            PCSrc_MEM <= PC_NEXT;
         end else begin
             PCPlus4_MEM <= PCPlus4_EX;
-            PCSrc_MEM <= PCSrc_EX;
             rd_MEM <= rd_EX;
             AluResult_MEM <= AluResult_EX;
             WriteData_MEM <= WriteData_EX;
-            PCTarget_MEM <= PCTarget_EX;
             ctrl_out.RegWrite <= ctrl_in.RegWrite;
             ctrl_out.ResultSrc <= ctrl_in.ResultSrc;
             ctrl_out.DataWE <= ctrl_in.DataWE;

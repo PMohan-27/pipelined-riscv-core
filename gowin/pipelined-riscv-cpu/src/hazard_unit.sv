@@ -3,7 +3,7 @@ module hazard_unit(
     input logic [4:0] rs1_ID, rs2_ID,
     input logic [4:0] rs1_EX, rs2_EX,
     input t_result_src ResultSrc_EX,
-    input t_pcsrc PCSrc_MEM,
+    input t_pcsrc PCSrc_EX,
     input logic [4:0] rd_MEM, rd_WB, rd_EX,
     input logic RegWrite_MEM, RegWrite_WB,
 
@@ -22,7 +22,7 @@ module hazard_unit(
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
-        if(PCSrc_MEM != PC_NEXT) begin
+        if(PCSrc_EX != PC_NEXT) begin
             Flush_ID = 1'b1;
             Flush_EX = 1'b1;
         end

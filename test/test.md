@@ -12,8 +12,8 @@ pip install -r requirements.txt
 
 ```text
 test/
-├── alu_test/        - ALU unit tests
-└── toplevel_test/   - Top level integration tests
+    - alu_test/        - ALU unit tests
+    - toplevel_test/   - Top level tests
 ```
 
 ### ALU Tests

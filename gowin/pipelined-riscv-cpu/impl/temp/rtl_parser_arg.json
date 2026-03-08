@@ -1,0 +1,105 @@
+{
+ "Device" : "GW2AR-18C",
+ "Files" : [
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ALU.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX_MEM.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID_EX.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF_ID.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/MEM.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/MEM_WB.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/PC.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/WB.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/alu_pkg.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/control_signals_if.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/control_unit.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/control_unit_pkg.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/data_memory.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/hazard_unit.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/imm_gen.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/imm_gen_pkg.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/instruction_memory.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/pc_select.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/register_file.sv",
+   "Type" : "verilog"
+  }
+ ],
+ "IncludePath" : [
+
+ ],
+ "LoopLimit" : 2000,
+ "ResultFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/impl/temp/rtl_parser.result",
+ "Top" : "",
+ "VerilogStd" : "sysv",
+ "VhdlStd" : "vhdl_93"
+}

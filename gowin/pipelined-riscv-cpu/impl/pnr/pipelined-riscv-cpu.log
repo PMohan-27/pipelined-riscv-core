@@ -1,0 +1,4 @@
+Reading netlist file: "\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\impl\gwsynthesis\pipelined-riscv-cpu.vg"
+Parsing netlist file "\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\impl\gwsynthesis\pipelined-riscv-cpu.vg" completed
+Processing netlist completed
+ERROR  (TA2003) : "\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\pipelined-riscv-cpu.sdc":6 | Can't set timing constraint to object 

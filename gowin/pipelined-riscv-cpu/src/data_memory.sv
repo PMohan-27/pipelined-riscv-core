@@ -8,7 +8,7 @@ module data_mem(
 );
 
     /* verilator lint_off WIDTHTRUNC */
-    logic [31:0] memory [0:256];
+    logic [31:0] memory [0:32];
     integer i;
 
     logic misalign;

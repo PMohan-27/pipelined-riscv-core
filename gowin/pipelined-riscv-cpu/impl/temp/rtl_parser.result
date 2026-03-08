@@ -1,0 +1,164 @@
+[
+ {
+  "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+  "InstLine" : 2,
+  "InstName" : "top",
+  "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+  "ModuleLine" : 2,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 39,
+    "InstName" : "if_pipeline_stage_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "IF_PIPELINE_STAGE",
+    "SubInsts" : [
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF.sv",
+      "InstLine" : 22,
+      "InstName" : "pc_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/PC.sv",
+      "ModuleLine" : 1,
+      "ModuleName" : "PC"
+     },
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF.sv",
+      "InstLine" : 30,
+      "InstName" : "instruction_memory_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/instruction_memory.sv",
+      "ModuleLine" : 1,
+      "ModuleName" : "instruction_memory"
+     }
+    ]
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 52,
+    "InstName" : "if_id_pipeline_reg_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/IF_ID.sv",
+    "ModuleLine" : 1,
+    "ModuleName" : "IF_ID_PIPELINE_REG"
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 66,
+    "InstName" : "id_pipeline_stage_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID.sv",
+    "ModuleLine" : 1,
+    "ModuleName" : "ID_PIPELINE_STAGE",
+    "SubInsts" : [
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID.sv",
+      "InstLine" : 38,
+      "InstName" : "control_unit_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/control_unit.sv",
+      "ModuleLine" : 4,
+      "ModuleName" : "control_unit"
+     },
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID.sv",
+      "InstLine" : 45,
+      "InstName" : "register_file_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/register_file.sv",
+      "ModuleLine" : 1,
+      "ModuleName" : "reg_file"
+     },
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID.sv",
+      "InstLine" : 57,
+      "InstName" : "imm_gen_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/imm_gen.sv",
+      "ModuleLine" : 2,
+      "ModuleName" : "imm_gen"
+     }
+    ]
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 84,
+    "InstName" : "id_ex_pipeline_reg_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ID_EX.sv",
+    "ModuleLine" : 4,
+    "ModuleName" : "ID_EX_PIPELINE_REG"
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 111,
+    "InstName" : "ex_pipeline_stage_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "EX_PIPELINE_STAGE",
+    "SubInsts" : [
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX.sv",
+      "InstLine" : 14,
+      "InstName" : "pc_select_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/pc_select.sv",
+      "ModuleLine" : 2,
+      "ModuleName" : "pc_select"
+     },
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX.sv",
+      "InstLine" : 49,
+      "InstName" : "ALU_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/ALU.sv",
+      "ModuleLine" : 2,
+      "ModuleName" : "ALU"
+     }
+    ]
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 129,
+    "InstName" : "ex_mem_pipeline_reg_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/EX_MEM.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "EX_MEM_PIPELINE_REG"
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 147,
+    "InstName" : "mem_pipeline_stage_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/MEM.sv",
+    "ModuleLine" : 1,
+    "ModuleName" : "MEM_PIPELINE_STAGE",
+    "SubInsts" : [
+     {
+      "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/MEM.sv",
+      "InstLine" : 9,
+      "InstName" : "data_memory_inst",
+      "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/data_memory.sv",
+      "ModuleLine" : 2,
+      "ModuleName" : "data_mem"
+     }
+    ]
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 158,
+    "InstName" : "mem_wb_pipeline_reg_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/MEM_WB.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "MEM_WB_PIPELINE_REG"
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 175,
+    "InstName" : "wb_pipeline_stage_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/WB.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "WB_PIPELINE_STAGE"
+   },
+   {
+    "InstFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/cpu_top.sv",
+    "InstLine" : 185,
+    "InstName" : "hazard_unit_inst",
+    "ModuleFile" : "//wsl.localhost/Ubuntu/home/mohan/projects/verilog-projects/pipelined-riscv-core/gowin/pipelined-riscv-cpu/src/hazard_unit.sv",
+    "ModuleLine" : 2,
+    "ModuleName" : "hazard_unit"
+   }
+  ]
+ }
+]

@@ -16,7 +16,7 @@ A 5-stage pipelined RV32I core , targeting the Tang Nano 20K FPGA.
 
 ## Project Structure
 
-```shell
+```text
 rtl/        - Verilog source files
 test/       - Cocotb tests
 docs/       - Documentation and diagrams

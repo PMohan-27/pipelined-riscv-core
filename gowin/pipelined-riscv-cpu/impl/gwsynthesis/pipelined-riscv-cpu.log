@@ -1,0 +1,54 @@
+GowinSynthesis start
+Reading property constraint file "\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\constraints.gsc"
+Running parser ...
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\alu_pkg.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ALU.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit_pkg.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX_MEM.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID_EX.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF_ID.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM_WB.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\PC.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\WB.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen_pkg.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_signals_if.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\cpu_top.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\hazard_unit.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\pc_select.sv'
+Analyzing Verilog file '\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\register_file.sv'
+Compiling module 'top'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\cpu_top.sv":2)
+Compiling module 'IF_PIPELINE_STAGE'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF.sv":2)
+Compiling module 'PC'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\PC.sv":1)
+Compiling module 'instruction_memory'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv":1)
+Extracting RAM for identifier 'instruction_mem'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv":7)
+Compiling module 'IF_ID_PIPELINE_REG'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF_ID.sv":1)
+Compiling module 'ID_PIPELINE_STAGE(ctrl_out=control_signals_if_ID_STAGE_OUT)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID.sv":1)
+Compiling module 'control_unit(ctrl_out=control_signals_if_control_unit)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit.sv":4)
+Compiling module 'reg_file'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\register_file.sv":1)
+Compiling module 'imm_gen'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen.sv":2)
+Compiling module 'ID_EX_PIPELINE_REG(ctrl_in=control_signals_if_ID_EX_IN,ctrl_out=control_signals_if_ID_EX_OUT)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID_EX.sv":4)
+Compiling module 'EX_PIPELINE_STAGE(ctrl_in=control_signals_if_EX_STAGE_IN)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX.sv":2)
+Compiling module 'pc_select'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\pc_select.sv":2)
+Compiling module 'ALU'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ALU.sv":2)
+Compiling module 'EX_MEM_PIPELINE_REG(ctrl_in=control_signals_if_EX_MEM_IN,ctrl_out=control_signals_if_EX_MEM_OUT)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX_MEM.sv":2)
+Compiling module 'MEM_PIPELINE_STAGE(ctrl_in=control_signals_if_MEM_STAGE_IN)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM.sv":1)
+Compiling module 'data_mem'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv":2)
+Extracting RAM for identifier 'memory'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv":11)
+Compiling module 'MEM_WB_PIPELINE_REG(ctrl_in=control_signals_if_MEM_WB_IN,ctrl_out=control_signals_if_MEM_WB_OUT)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM_WB.sv":2)
+Compiling module 'WB_PIPELINE_STAGE(ctrl_in=control_signals_if_WB_STAGE_IN)'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\WB.sv":2)
+Compiling module 'hazard_unit'("\\wsl.localhost\Ubuntu\home\mohan\projects\verilog-projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\hazard_unit.sv":2)
+NOTE  (EX0101) : Current top module is "top"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...

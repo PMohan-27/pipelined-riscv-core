@@ -2,7 +2,7 @@ import control_unit_pkg::*;
 module top(
     input logic clk,
     input logic rst
-);
+)/* synthesis syn_preserve = 1 */;;
     logic [31:0] instruction_IF, PC_IF, PCPlus4_IF;
     logic [31:0] instruction_ID, PC_ID, PCPlus4_ID;
     logic [4:0] rs1_ID, rs2_ID, rd_ID;
@@ -18,9 +18,7 @@ module top(
     logic [31:0] AluResult_EX, WriteData_EX;
     t_pcsrc PCSrc_EX;
 
-    t_pcsrc PCSrc_MEM;
     logic [31:0] PCPlus4_MEM;
-    logic [31:0] PCTarget_MEM;
     logic [4:0] rd_MEM;
     logic [31:0] AluResult_MEM, WriteData_MEM;
     logic [31:0] ReadData_MEM;
@@ -41,9 +39,9 @@ module top(
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
         .rst(rst),
-        .AluResult_MEM(AluResult_MEM), 
-        .PCTarget_MEM(PCTarget_MEM),
-        .PCSrc_MEM(PCSrc_MEM),
+        .AluResult_EX(AluResult_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .PCSrc_EX(PCSrc_EX),
         .Stall(Stall_IF),
 
         .instruction_IF(instruction_IF), 
@@ -136,11 +134,8 @@ module top(
         .rd_EX(rd_EX),
         .AluResult_EX(AluResult_EX), 
         .WriteData_EX(WriteData_EX),
-        .PCSrc_EX(PCSrc_EX),
 
-        .PCSrc_MEM(PCSrc_MEM),
         .PCPlus4_MEM(PCPlus4_MEM), 
-        .PCTarget_MEM(PCTarget_MEM),
         .rd_MEM(rd_MEM),
         .AluResult_MEM(AluResult_MEM), 
         .WriteData_MEM(WriteData_MEM),
@@ -193,7 +188,7 @@ module top(
         .rs1_EX(rs1_EX), 
         .rs2_EX(rs2_EX),
         .ResultSrc_EX(EX_CONTROL_SIGNALS.ResultSrc),
-        .PCSrc_MEM(PCSrc_MEM),
+        .PCSrc_EX(PCSrc_EX),
         .rd_MEM(rd_MEM),
         .rd_WB(rd_WB),
         .rd_EX(rd_EX),
