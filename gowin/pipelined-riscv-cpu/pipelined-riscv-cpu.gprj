@@ -1,0 +1,33 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2AR-18C" pn="GW2AR-LV18QN88C8/I7">gw2ar18c-000</Device>
+    <FileList>
+        <File path="src/ALU.sv" type="file.verilog" enable="1"/>
+        <File path="src/EX.sv" type="file.verilog" enable="1"/>
+        <File path="src/EX_MEM.sv" type="file.verilog" enable="1"/>
+        <File path="src/ID.sv" type="file.verilog" enable="1"/>
+        <File path="src/ID_EX.sv" type="file.verilog" enable="1"/>
+        <File path="src/IF.sv" type="file.verilog" enable="1"/>
+        <File path="src/IF_ID.sv" type="file.verilog" enable="1"/>
+        <File path="src/MEM.sv" type="file.verilog" enable="1"/>
+        <File path="src/MEM_WB.sv" type="file.verilog" enable="1"/>
+        <File path="src/PC.sv" type="file.verilog" enable="1"/>
+        <File path="src/WB.sv" type="file.verilog" enable="1"/>
+        <File path="src/alu_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/control_signals_if.sv" type="file.verilog" enable="1"/>
+        <File path="src/control_unit.sv" type="file.verilog" enable="1"/>
+        <File path="src/control_unit_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/cpu_top.sv" type="file.verilog" enable="1"/>
+        <File path="src/data_memory.sv" type="file.verilog" enable="1"/>
+        <File path="src/hazard_unit.sv" type="file.verilog" enable="1"/>
+        <File path="src/imm_gen.sv" type="file.verilog" enable="1"/>
+        <File path="src/imm_gen_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/instruction_memory.sv" type="file.verilog" enable="1"/>
+        <File path="src/pc_select.sv" type="file.verilog" enable="1"/>
+        <File path="src/register_file.sv" type="file.verilog" enable="1"/>
+        <File path="src/constraints.gsc" type="file.gsc" enable="1"/>
+    </FileList>
+</Project>

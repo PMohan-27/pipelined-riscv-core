@@ -1,0 +1,67 @@
+GowinSynthesis start
+Reading property constraint file "C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\constraints.gsc"
+Running parser ...
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\alu_pkg.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ALU.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen_pkg.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit_pkg.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_signals_if.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\cpu_top.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX_MEM.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\hazard_unit.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID_EX.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF_ID.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM_WB.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\PC.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\pc_select.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\register_file.sv'
+Analyzing Verilog file 'C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\WB.sv'
+Compiling module 'top'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\cpu_top.sv":1)
+Compiling module 'IF_PIPELINE_STAGE'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF.sv":2)
+Compiling module 'PC'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\PC.sv":1)
+Compiling module 'instruction_memory'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv":1)
+Extracting RAM for identifier 'instruction_mem'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\instruction_memory.sv":8)
+Compiling module 'IF_ID_PIPELINE_REG'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\IF_ID.sv":1)
+Compiling module 'ID_PIPELINE_STAGE(ctrl_out=control_signals_if_ID_STAGE_OUT)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID.sv":1)
+Compiling module 'control_unit(ctrl_out=control_signals_if_control_unit)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\control_unit.sv":4)
+Compiling module 'reg_file'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\register_file.sv":1)
+Compiling module 'imm_gen'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\imm_gen.sv":2)
+Compiling module 'ID_EX_PIPELINE_REG(ctrl_in=control_signals_if_ID_EX_IN,ctrl_out=control_signals_if_ID_EX_OUT)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ID_EX.sv":2)
+Compiling module 'EX_PIPELINE_STAGE(ctrl_in=control_signals_if_EX_STAGE_IN)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX.sv":2)
+Compiling module 'pc_select'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\pc_select.sv":2)
+Compiling module 'ALU'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\ALU.sv":2)
+Compiling module 'EX_MEM_PIPELINE_REG(ctrl_in=control_signals_if_EX_MEM_IN,ctrl_out=control_signals_if_EX_MEM_OUT)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\EX_MEM.sv":1)
+Compiling module 'MEM_PIPELINE_STAGE(ctrl_in=control_signals_if_MEM_STAGE_IN)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM.sv":1)
+Compiling module 'data_mem'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv":1)
+Extracting RAM for identifier 'memory'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\data_memory.sv":10)
+Compiling module 'MEM_WB_PIPELINE_REG(ctrl_in=control_signals_if_MEM_WB_IN,ctrl_out=control_signals_if_MEM_WB_OUT)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\MEM_WB.sv":1)
+Compiling module 'WB_PIPELINE_STAGE(ctrl_in=control_signals_if_WB_STAGE_IN)'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\WB.sv":1)
+Compiling module 'hazard_unit'("C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\src\hazard_unit.sv":1)
+NOTE  (EX0101) : Current top module is "top"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+[95%] Generate netlist file "C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\impl\gwsynthesis\pipelined-riscv-cpu.vg" completed
+[100%] Generate report file "C:\dev\Verilog-Projects\pipelined-riscv-core\gowin\pipelined-riscv-cpu\impl\gwsynthesis\pipelined-riscv-cpu_syn.rpt.html" completed
+GowinSynthesis finish

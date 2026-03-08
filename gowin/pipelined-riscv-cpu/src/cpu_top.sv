@@ -1,0 +1,208 @@
+module top(
+    input logic clk,
+    input logic rst,
+    output logic debug
+);  
+    assign debug = Flush_EX;
+    logic [31:0] instruction_IF, PC_IF, PCPlus4_IF;
+    logic [31:0] instruction_ID, PC_ID, PCPlus4_ID;
+    logic [4:0] rs1_ID, rs2_ID, rd_ID;
+    logic [31:0] RD1_ID, RD2_ID;
+    logic [31:0] ImmExt_ID;
+
+    logic [31:0] RD1_EX, RD2_EX;
+    logic [4:0] rs1_EX, rs2_EX;
+    logic [31:0] PC_EX, PCPlus4_EX, ImmExt_EX;
+
+    logic [31:0] PCTarget_EX;
+    logic [4:0] rd_EX;
+    logic [31:0] AluResult_EX, WriteData_EX;
+    t_pcsrc PCSrc_EX;
+
+    logic [31:0] PCPlus4_MEM;
+    logic [4:0] rd_MEM;
+    logic [31:0] AluResult_MEM, WriteData_MEM;
+    logic [31:0] ReadData_MEM;
+
+    logic [31:0] AluResult_WB, ReadData_WB;
+    logic [4:0] rd_WB;
+    logic [31:0] PCPlus4_WB;
+    logic [31:0] Result_WB;
+
+    control_signals_if ID_CONTROL_SIGNALS();
+    control_signals_if EX_CONTROL_SIGNALS();
+    control_signals_if MEM_CONTROL_SIGNALS();
+    control_signals_if WB_CONTROL_SIGNALS();
+
+    logic Flush_EX, Flush_ID, Stall_IF, Stall_ID;
+    logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
+
+    IF_PIPELINE_STAGE if_pipeline_stage_inst(
+        .clk(clk), 
+        .rst(rst),
+        .AluResult_EX(AluResult_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .PCSrc_EX(PCSrc_EX),
+        .Stall(Stall_IF),
+
+        .instruction_IF(instruction_IF), 
+        .PC_IF(PC_IF), 
+        .PCPlus4_IF(PCPlus4_IF)
+    );
+
+    IF_ID_PIPELINE_REG if_id_pipeline_reg_inst(
+        .clk(clk),
+        .rst(rst),
+        .instruction_IF(instruction_IF),
+        .PC_IF(PC_IF),
+        .PCPlus4_IF(PCPlus4_IF),
+        .Stall(Stall_ID),
+        .Flush(Flush_ID),
+
+        .instruction_ID(instruction_ID),
+        .PC_ID(PC_ID),
+        .PCPlus4_ID(PCPlus4_ID)
+    );
+
+    ID_PIPELINE_STAGE id_pipeline_stage_inst(
+        .clk(clk),
+        .rst(rst),
+        .instruction_ID(instruction_ID),
+        .rd_WB(rd_WB),
+        .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
+        .Result_WB(Result_WB),
+
+        .rs1_ID(rs1_ID),
+        .rs2_ID(rs2_ID),
+        .rd_ID(rd_ID),
+        .RD1_ID(RD1_ID),
+        .RD2_ID(RD2_ID),
+        .ImmExt_ID(ImmExt_ID),
+
+        .ctrl_out(ID_CONTROL_SIGNALS)
+    );
+
+    ID_EX_PIPELINE_REG id_ex_pipeline_reg_inst(
+        .clk(clk),
+        .rst(rst),
+        .rs1_ID(rs1_ID),
+        .rs2_ID(rs2_ID),
+        .rd_ID(rd_ID),
+        .PC_ID(PC_ID),
+        .ImmExt_ID(ImmExt_ID),
+        .PCPlus4_ID(PCPlus4_ID),
+        .RD1_ID(RD1_ID),
+        .RD2_ID(RD2_ID),
+        .Flush(Flush_EX),
+
+        .RD1_EX(RD1_EX),
+        .RD2_EX(RD2_EX),
+        .rs1_EX(rs1_EX),
+        .rs2_EX(rs2_EX),
+        .rd_EX(rd_EX),
+        .PC_EX(PC_EX),
+        .PCPlus4_EX(PCPlus4_EX),
+        .ImmExt_EX(ImmExt_EX),
+
+        .ctrl_in(ID_CONTROL_SIGNALS),
+        .ctrl_out(EX_CONTROL_SIGNALS)
+    );
+    
+
+    EX_PIPELINE_STAGE ex_pipeline_stage_inst(
+        .clk(clk),
+        .RD1_EX(RD1_EX), 
+        .RD2_EX(RD2_EX),
+        .PC_EX(PC_EX), 
+        .ImmExt_EX(ImmExt_EX),
+        .ForwardAluSrcA_EX(ForwardAluSrcA_EX), 
+        .ForwardAluSrcB_EX(ForwardAluSrcB_EX),
+        .AluResult_MEM(AluResult_MEM), 
+        .Result_WB(Result_WB),
+
+        .AluResult_EX(AluResult_EX), 
+        .WriteData_EX(WriteData_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .PCSrc_EX(PCSrc_EX),
+
+        .ctrl_in(EX_CONTROL_SIGNALS)
+    );
+
+    EX_MEM_PIPELINE_REG ex_mem_pipeline_reg_inst(
+        .clk(clk), 
+        .rst(rst),
+        .PCPlus4_EX(PCPlus4_EX), 
+        .PCTarget_EX(PCTarget_EX),
+        .rd_EX(rd_EX),
+        .AluResult_EX(AluResult_EX), 
+        .WriteData_EX(WriteData_EX),
+
+        .PCPlus4_MEM(PCPlus4_MEM), 
+        .rd_MEM(rd_MEM),
+        .AluResult_MEM(AluResult_MEM), 
+        .WriteData_MEM(WriteData_MEM),
+
+        .ctrl_in(EX_CONTROL_SIGNALS),
+        .ctrl_out(MEM_CONTROL_SIGNALS)
+    );
+
+    MEM_PIPELINE_STAGE mem_pipeline_stage_inst(
+        .clk(clk), 
+        .rst(rst),
+        .AluResult_MEM(AluResult_MEM),
+        .WriteData_MEM(WriteData_MEM),
+        
+        .ReadData_MEM(ReadData_MEM),
+    
+        .ctrl_in(MEM_CONTROL_SIGNALS)
+    );
+
+    MEM_WB_PIPELINE_REG mem_wb_pipeline_reg_inst(
+        .clk(clk), 
+        .rst(rst),
+        .AluResult_MEM(AluResult_MEM), 
+        .ReadData_MEM(ReadData_MEM),
+        .rd_MEM(rd_MEM),
+        .PCPlus4_MEM(PCPlus4_MEM),
+
+        .AluResult_WB(AluResult_WB), 
+        .ReadData_WB(ReadData_WB),
+        .rd_WB(rd_WB),
+        .PCPlus4_WB(PCPlus4_WB),
+
+        .ctrl_in(MEM_CONTROL_SIGNALS),
+        .ctrl_out(WB_CONTROL_SIGNALS)
+    );
+
+    WB_PIPELINE_STAGE wb_pipeline_stage_inst(
+        .AluResult_WB(AluResult_WB), 
+        .ReadData_WB(ReadData_WB), 
+        .PCPlus4_WB(PCPlus4_WB),
+
+        .Result_WB(Result_WB),
+
+        .ctrl_in(WB_CONTROL_SIGNALS)
+    );
+
+    hazard_unit hazard_unit_inst(
+        .rs1_ID(rs1_ID),
+        .rs2_ID(rs2_ID),
+        .rs1_EX(rs1_EX), 
+        .rs2_EX(rs2_EX),
+        .ResultSrc_EX(EX_CONTROL_SIGNALS.ResultSrc),
+        .PCSrc_EX(PCSrc_EX),
+        .rd_MEM(rd_MEM),
+        .rd_WB(rd_WB),
+        .rd_EX(rd_EX),
+        .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
+        .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
+
+        .Stall_IF(Stall_IF),
+        .Stall_ID(Stall_ID), 
+        .Flush_ID(Flush_ID),
+        .Flush_EX(Flush_EX),
+        .ForwardAluSrcA_EX(ForwardAluSrcA_EX),
+        .ForwardAluSrcB_EX(ForwardAluSrcB_EX)
+    );
+
+endmodule

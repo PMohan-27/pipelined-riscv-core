@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" T_Register="3639(0)" T_Alu="136(0)" T_Lut="7374(0)">
+ <SubModule name="if_pipeline_stage_inst" Lut="106" T_Register="64(0)" T_Lut="109(106)">
+  <SubModule name="pc_inst" Register="32" Lut="3" T_Register="32(32)" T_Lut="3(3)"/>
+  <SubModule name="instruction_memory_inst" Register="32" T_Register="32(32)"/>
+ </SubModule>
+ <SubModule name="if_id_pipeline_reg_inst" Register="96" Lut="1" T_Register="96(96)" T_Lut="1(1)"/>
+ <SubModule name="id_pipeline_stage_inst" T_Register="1024(0)" T_Alu="10(0)" T_Lut="1177(0)">
+  <SubModule name="control_unit_inst" Lut="36" T_Lut="36(36)"/>
+  <SubModule name="register_file_inst" Register="1024" Alu="10" Lut="1107" T_Register="1024(1024)" T_Alu="10(10)" T_Lut="1107(1107)"/>
+  <SubModule name="imm_gen_inst" Lut="34" T_Lut="34(34)"/>
+ </SubModule>
+ <SubModule name="id_ex_pipeline_reg_inst" Register="193" Lut="4" T_Register="193(193)" T_Lut="4(4)"/>
+ <SubModule name="ex_pipeline_stage_inst" Alu="32" Lut="228" T_Register="2(0)" T_Alu="96(32)" T_Lut="923(228)">
+  <SubModule name="pc_select_inst" Register="2" Lut="29" T_Register="2(2)" T_Lut="29(29)"/>
+  <SubModule name="ALU_inst" Alu="64" Lut="666" T_Alu="64(64)" T_Lut="666(666)"/>
+ </SubModule>
+ <SubModule name="ex_mem_pipeline_reg_inst" Register="108" T_Register="108(108)"/>
+ <SubModule name="mem_pipeline_stage_inst" T_Register="2048(0)" T_Lut="5095(0)">
+  <SubModule name="data_memory_inst" Register="2048" Lut="5095" T_Register="2048(2048)" T_Lut="5095(5095)"/>
+ </SubModule>
+ <SubModule name="mem_wb_pipeline_reg_inst" Register="104" T_Register="104(104)"/>
+ <SubModule name="wb_pipeline_stage_inst" Lut="64" T_Lut="64(64)"/>
+ <SubModule name="hazard_unit_inst" Alu="30" Lut="1" T_Alu="30(30)" T_Lut="1(1)"/>
+</Module>
