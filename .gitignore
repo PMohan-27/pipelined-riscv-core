@@ -11,3 +11,6 @@ test.hex
 test.o
 dmemdump.txt
 instrdump.txt
+gowin/pipelined-riscv-cpu/pipelined-riscv-cpu.gprj
+gowin/pipelined-riscv-cpu/pipelined-riscv-cpu.gprj.user
+gowin/pipelined-riscv-cpu/impl

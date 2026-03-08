@@ -10,7 +10,7 @@ A 5-stage pipelined RV32I core , targeting the Tang Nano 20K FPGA.
 
 ## Current Status
 
-**Phase 2 - Pipelined Core** 
+[**Phase 3 - SoC Integration**](https://github.com/PMohan-27/RISCV-SoC)
 
 ![Pipeline Diagram](docs/Pipelined_riscv.png)
 
