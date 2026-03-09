@@ -1,19 +1,23 @@
 module MEM_PIPELINE_STAGE(
     input logic clk, rst,
     input logic [31:0] AluResult_MEM, WriteData_MEM,
-    
+    input  logic [31:0] data_rdata,
+
     output logic [31:0] ReadData_MEM,
+    output logic [31:0] data_addr,
+    output logic [31:0] data_wdata,
+    output logic        data_we,
+    output logic [2:0]  data_type, 
 
     control_signals_if.MEM_STAGE_IN ctrl_in
 );
-    data_mem data_memory_inst(
-        .clk(clk), 
-        .rst(rst), 
-        .DataType(ctrl_in.DataType),
-        .DataWE(ctrl_in.DataWE),
-        .Address(AluResult_MEM),
-        .WriteData(WriteData_MEM),
-        .ReadData(ReadData_MEM)
-    );
+
+    assign ReadData_MEM = data_rdata;
+    assign data_addr = AluResult_MEM;
+    assign data_wdata = WriteData_MEM;
+    assign data_we = ctrl_in.DataWE;
+    assign data_type = ctrl_in.DataType;
+
+    
 
 endmodule

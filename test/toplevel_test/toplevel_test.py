@@ -4,7 +4,7 @@ from cocotb.triggers import RisingEdge
 
 @cocotb.test()
 async def test(dut):
-    imem = dut.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
+    imem = dut.cpu_inst.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
     
     load_instructions(imem)
     
@@ -15,11 +15,11 @@ async def test(dut):
     await RisingEdge(dut.clk)
     dut.rst.value = 0
 
-    regs = dut.id_pipeline_stage_inst.register_file_inst.registers
+    # regs = dut.cpu_inst.id_pipeline_stage_inst.register_file_inst.registers
 
     await RisingEdge(dut.clk)
     
-    dmem = dut.mem_pipeline_stage_inst.data_memory_inst
+    # dmem = dut.mem_pipeline_stage_inst.data_memory_inst
 
     for _ in range(400):
         await RisingEdge(dut.clk)
@@ -30,7 +30,7 @@ async def test(dut):
     dump_data_mem(dut)
 
 def dump_regs(dut, filename="dumps/regdump.txt"):
-    regs = dut.id_pipeline_stage_inst.register_file_inst.registers
+    regs = dut.cpu_inst.id_pipeline_stage_inst.register_file_inst.registers
     with open(filename, "w") as f:
         for i in range(32):
             val = regs[i].value.integer
@@ -38,14 +38,14 @@ def dump_regs(dut, filename="dumps/regdump.txt"):
 
 def dump_instrs(dut, filename="dumps/instrdump.txt"):
     with open(filename, "w") as f:
-        imem = dut.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
+        imem = dut.cpu_inst.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
         for i in range(256):
             val = imem[i].value.integer
             f.write(f"imem[{i}] = {val:#010x}  ({val})\n")
 
 def dump_data_mem(dut, filename="dumps/dmemdump.txt"):
     with open(filename, "w") as f:
-        dmem = dut.mem_pipeline_stage_inst.data_memory_inst.memory
+        dmem = dut.data_memory_inst.memory
         for i in range(256):
             val = dmem[i].value.integer
             f.write(f"dmem[{i}] = {val:#010x}  ({val})\n")

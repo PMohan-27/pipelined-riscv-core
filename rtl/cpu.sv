@@ -1,6 +1,14 @@
-module top(
+module cpu(
     input logic clk,
-    input logic rst
+    input logic rst,
+
+
+    input  logic [31:0] data_rdata,
+    output logic [31:0] data_addr,
+    output logic [31:0] data_wdata,
+    output logic data_we,
+    output logic [2:0]  data_type
+
 );
     logic [31:0] instruction_IF, PC_IF, PCPlus4_IF;
     logic [31:0] instruction_ID, PC_ID, PCPlus4_ID;
@@ -148,7 +156,13 @@ module top(
         .rst(rst),
         .AluResult_MEM(AluResult_MEM),
         .WriteData_MEM(WriteData_MEM),
-        
+        .data_rdata(data_rdata),
+
+        .data_addr(data_addr),
+        .data_wdata(data_wdata),
+        .data_we(data_we),
+        .data_type(data_type), 
+
         .ReadData_MEM(ReadData_MEM),
     
         .ctrl_in(MEM_CONTROL_SIGNALS)
