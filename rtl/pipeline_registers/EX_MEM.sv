@@ -1,8 +1,9 @@
 module EX_MEM_PIPELINE_REG(
     input logic clk, rst,
-    input logic [31:0] PCPlus4_EX, PCTarget_EX,
+    input logic [31:0] PCPlus4_EX,
     input logic [4:0] rd_EX,
     input logic [31:0] AluResult_EX, WriteData_EX,
+    input logic Stall,
 
     output logic [31:0] PCPlus4_MEM,
     output logic [4:0] rd_MEM,
@@ -21,7 +22,7 @@ module EX_MEM_PIPELINE_REG(
             ctrl_out.ResultSrc <= ALU_RESULT;
             ctrl_out.DataWE <= '0;
             ctrl_out.DataType <= WORD;
-        end else begin
+        end else if (!Stall) begin
             PCPlus4_MEM <= PCPlus4_EX;
             rd_MEM <= rd_EX;
             AluResult_MEM <= AluResult_EX;

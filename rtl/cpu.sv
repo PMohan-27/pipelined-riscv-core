@@ -4,9 +4,11 @@ module cpu(
 
 
     input  logic [31:0] data_rdata,
+    input logic data_stall,
     output logic [31:0] data_addr,
     output logic [31:0] data_wdata,
     output logic data_we,
+    output logic data_re,
     output logic [2:0]  data_type
 
 );
@@ -40,7 +42,7 @@ module cpu(
     control_signals_if MEM_CONTROL_SIGNALS();
     control_signals_if WB_CONTROL_SIGNALS();
 
-    logic Flush_EX, Flush_ID, Stall_IF, Stall_ID;
+    logic Flush_EX, Flush_ID, Stall_IF, Stall_ID, Stall_EX;
     logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
@@ -77,7 +79,7 @@ module cpu(
         .rd_WB(rd_WB),
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
         .Result_WB(Result_WB),
-
+        
         .rs1_ID(rs1_ID),
         .rs2_ID(rs2_ID),
         .rd_ID(rd_ID),
@@ -100,6 +102,7 @@ module cpu(
         .RD1_ID(RD1_ID),
         .RD2_ID(RD2_ID),
         .Flush(Flush_EX),
+        .Stall(Stall_EX),
 
         .RD1_EX(RD1_EX),
         .RD2_EX(RD2_EX),
@@ -137,10 +140,10 @@ module cpu(
         .clk(clk), 
         .rst(rst),
         .PCPlus4_EX(PCPlus4_EX), 
-        .PCTarget_EX(PCTarget_EX),
         .rd_EX(rd_EX),
         .AluResult_EX(AluResult_EX), 
         .WriteData_EX(WriteData_EX),
+        .Stall(Stall_EX),
 
         .PCPlus4_MEM(PCPlus4_MEM), 
         .rd_MEM(rd_MEM),
@@ -162,7 +165,7 @@ module cpu(
         .data_wdata(data_wdata),
         .data_we(data_we),
         .data_type(data_type), 
-
+        .data_re(data_re),
         .ReadData_MEM(ReadData_MEM),
     
         .ctrl_in(MEM_CONTROL_SIGNALS)
@@ -207,9 +210,11 @@ module cpu(
         .rd_EX(rd_EX),
         .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
-
+        .data_stall(data_stall),
+        
         .Stall_IF(Stall_IF),
         .Stall_ID(Stall_ID), 
+        .Stall_EX(Stall_EX),
         .Flush_ID(Flush_ID),
         .Flush_EX(Flush_EX),
         .ForwardAluSrcA_EX(ForwardAluSrcA_EX),

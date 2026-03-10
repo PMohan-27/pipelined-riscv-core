@@ -85,6 +85,7 @@ interface control_signals_if;
     );
 
     modport MEM_STAGE_IN (
+        input ResultSrc,
         input DataWE,
         input DataType
     );

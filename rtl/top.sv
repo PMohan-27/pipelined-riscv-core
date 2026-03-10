@@ -5,7 +5,9 @@ module top(
     logic [31:0] data_addr;
     logic [31:0] data_wdata;
     logic data_we;
+    logic data_re;
     logic [2:0]  data_type;
+
     cpu cpu_inst(
         .clk(clk),
         .rst(rst),
@@ -13,7 +15,9 @@ module top(
         .data_addr(data_addr),
         .data_wdata(data_wdata),
         .data_we(data_we),
-        .data_type(data_type)
+        .data_type(data_type),
+        .data_re(data_re),
+        .data_stall(1'b0)
     );
 
     data_mem data_memory_inst(

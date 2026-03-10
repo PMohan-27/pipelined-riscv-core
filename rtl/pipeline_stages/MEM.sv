@@ -8,6 +8,7 @@ module MEM_PIPELINE_STAGE(
     output logic [31:0] data_wdata,
     output logic        data_we,
     output logic [2:0]  data_type, 
+    output logic data_re,
 
     control_signals_if.MEM_STAGE_IN ctrl_in
 );
@@ -17,7 +18,7 @@ module MEM_PIPELINE_STAGE(
     assign data_wdata = WriteData_MEM;
     assign data_we = ctrl_in.DataWE;
     assign data_type = ctrl_in.DataType;
-
+    assign data_re = (ctrl_in.ResultSrc == DATA_MEM_RESULT);
     
 
 endmodule

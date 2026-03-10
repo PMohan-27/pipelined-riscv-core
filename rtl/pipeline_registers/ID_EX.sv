@@ -4,7 +4,7 @@ module ID_EX_PIPELINE_REG (
     input logic [4:0] rs1_ID, rs2_ID, rd_ID,
     input logic [31:0] PC_ID, ImmExt_ID, PCPlus4_ID,
     input logic [31:0] RD1_ID, RD2_ID,
-    input logic Flush,
+    input logic Flush, Stall,
     
     output logic [31:0] RD1_EX, RD2_EX,
     output logic [4:0] rs1_EX, rs2_EX, rd_EX,
@@ -52,8 +52,7 @@ module ID_EX_PIPELINE_REG (
             ctrl_out.AluSrcBSel <= '0;
             ctrl_out.AluSrcASel  <= '0;
             ctrl_out.AluOp <= ALU_OP_ADD;
-        end
-        else begin
+        end  else if (!Stall) begin
             ctrl_out.RegWrite <= ctrl_in.RegWrite;
             ctrl_out.ResultSrc <= ctrl_in.ResultSrc;
             ctrl_out.Branch <= ctrl_in.Branch;
