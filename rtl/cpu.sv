@@ -4,12 +4,12 @@ module cpu(
 
 
     input  logic [31:0] data_rdata,
-    input logic data_stall,
     output logic [31:0] data_addr,
     output logic [31:0] data_wdata,
     output logic data_we,
     output logic data_re,
-    output logic [2:0]  data_type
+    output logic [2:0]  data_type,
+    input logic data_done
 
 );
     logic [31:0] instruction_IF, PC_IF, PCPlus4_IF;
@@ -44,7 +44,7 @@ module cpu(
 
     logic Flush_ID_EX, Flush_IF_ID, Stall_PC, Stall_IF_ID, Stall_ID_EX, Stall_EX_MEM;
     logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
-
+    logic data_stall;
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
         .rst(rst),
@@ -158,12 +158,13 @@ module cpu(
         .AluResult_MEM(AluResult_MEM),
         .WriteData_MEM(WriteData_MEM),
         .data_rdata(data_rdata),
-
+        .data_stall(data_stall),
         .data_addr(data_addr),
         .data_wdata(data_wdata),
         .data_we(data_we),
         .data_type(data_type), 
         .data_re(data_re),
+        .data_done(data_done),
         .ReadData_MEM(ReadData_MEM),
     
         .ctrl_in(MEM_CONTROL_SIGNALS)

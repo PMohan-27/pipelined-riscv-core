@@ -17,7 +17,7 @@ module top(
         .data_we(data_we),
         .data_type(data_type),
         .data_re(data_re),
-        .data_stall(1'b0)
+        .data_done(1'b1)
     );
 
     data_mem data_memory_inst(
