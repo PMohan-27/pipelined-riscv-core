@@ -12,7 +12,7 @@ module MEM_WB_PIPELINE_REG(
     control_signals_if.MEM_WB_OUT ctrl_out
 );
     always_ff @(posedge clk) begin
-        if(rst) begin
+        if(!rst) begin
             AluResult_WB <= '0;
             ReadData_WB <= '0;
             rd_WB <= '0;

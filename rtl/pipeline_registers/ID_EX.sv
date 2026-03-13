@@ -15,7 +15,7 @@ module ID_EX_PIPELINE_REG (
 );
 
     always_ff @(posedge clk) begin
-        if(rst) begin
+        if(!rst) begin
             RD1_EX <= '0;
             RD2_EX <= '0;
             rs1_EX <= '0;

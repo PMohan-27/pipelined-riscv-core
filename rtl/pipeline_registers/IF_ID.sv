@@ -11,7 +11,7 @@ module IF_ID_PIPELINE_REG(
     output logic [31:0] PCPlus4_ID
 );
     always_ff @(posedge clk) begin
-        if(rst) begin
+        if(!rst) begin
             instruction_ID <= '0;
             PC_ID <= '0;
             PCPlus4_ID <= '0;

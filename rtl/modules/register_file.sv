@@ -15,8 +15,8 @@ module reg_file(
              (WE3 && A3 == A2 && A3 != 5'b0) ? WD3 : registers[A2];
     integer i = 0;
 
-    always_ff @(posedge clk or posedge rst)begin
-        if(rst == 1'b1)begin
+    always_ff @(posedge clk)begin
+        if(!rst)begin
             for (i = 0; i < 32; i = i + 1) begin
                 registers[i] <= 32'h0;
             end

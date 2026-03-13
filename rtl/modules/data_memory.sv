@@ -51,7 +51,7 @@ module data_mem(
     end
     
    always_ff @(posedge clk) begin
-    if(rst == 1'b1) begin
+    if(!rst) begin
         for (i = 0; i < 32; i = i + 1) begin
             memory[i] <= 32'h0;
         end

@@ -5,8 +5,8 @@ module PC(
     input logic Stall
 );
 
-    always_ff @(posedge clk or posedge rst) begin
-        if(rst == 1'b1)begin
+    always_ff @(posedge clk) begin
+        if(!rst)begin
             PC_out <= '0;
         end
         else if(!Stall) begin

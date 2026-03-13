@@ -1,5 +1,4 @@
 module MEM_PIPELINE_STAGE(
-    input logic clk, rst,
     input logic [31:0] AluResult_MEM, WriteData_MEM,
     input  logic [31:0] data_rdata,
 

@@ -13,7 +13,7 @@ module EX_MEM_PIPELINE_REG(
     control_signals_if.EX_MEM_OUT ctrl_out
 );
     always_ff @(posedge clk) begin
-        if(rst) begin
+        if(!rst) begin
             PCPlus4_MEM <= '0;
             rd_MEM <= '0;
             AluResult_MEM <= '0;
