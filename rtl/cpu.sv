@@ -155,8 +155,6 @@ module cpu(
     );
 
     MEM_PIPELINE_STAGE mem_pipeline_stage_inst(
-        .clk(clk), 
-        .rst(rst),
         .AluResult_MEM(AluResult_MEM),
         .WriteData_MEM(WriteData_MEM),
         .data_rdata(data_rdata),

@@ -11,9 +11,9 @@ async def test(dut):
     cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
 
     await RisingEdge(dut.clk)
-    dut.rst.value = 1
-    await RisingEdge(dut.clk)
     dut.rst.value = 0
+    await RisingEdge(dut.clk)
+    dut.rst.value = 1
 
     # regs = dut.cpu_inst.id_pipeline_stage_inst.register_file_inst.registers
 
