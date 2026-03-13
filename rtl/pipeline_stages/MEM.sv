@@ -18,7 +18,7 @@ module MEM_PIPELINE_STAGE(
     assign data_wdata = WriteData_MEM;
     assign data_we = ctrl_in.DataWE;
     assign data_type = ctrl_in.DataType;
-    assign data_re = (ctrl_in.ResultSrc == DATA_MEM_RESULT) && !ctrl.DataWE;
+    assign data_re = (ctrl_in.ResultSrc == DATA_MEM_RESULT) && !ctrl_in.DataWE;
     
 
 endmodule
