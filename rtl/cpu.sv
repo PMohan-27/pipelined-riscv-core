@@ -42,7 +42,7 @@ module cpu(
     control_signals_if MEM_CONTROL_SIGNALS();
     control_signals_if WB_CONTROL_SIGNALS();
 
-    logic Flush_EX, Flush_ID, Stall_IF, Stall_ID, Stall_EX;
+    logic Flush_ID_EX, Flush_IF_ID, Stall_PC, Stall_IF_ID, Stall_ID_EX, Stall_EX_MEM;
     logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
 
     IF_PIPELINE_STAGE if_pipeline_stage_inst(
@@ -51,7 +51,7 @@ module cpu(
         .AluResult_EX(AluResult_EX), 
         .PCTarget_EX(PCTarget_EX),
         .PCSrc_EX(PCSrc_EX),
-        .Stall(Stall_IF),
+        .Stall(Stall_PC),
 
         .instruction_IF(instruction_IF), 
         .PC_IF(PC_IF), 
@@ -64,8 +64,8 @@ module cpu(
         .instruction_IF(instruction_IF),
         .PC_IF(PC_IF),
         .PCPlus4_IF(PCPlus4_IF),
-        .Stall(Stall_ID),
-        .Flush(Flush_ID),
+        .Stall(Stall_IF_ID),
+        .Flush(Flush_IF_ID),
 
         .instruction_ID(instruction_ID),
         .PC_ID(PC_ID),
@@ -101,8 +101,8 @@ module cpu(
         .PCPlus4_ID(PCPlus4_ID),
         .RD1_ID(RD1_ID),
         .RD2_ID(RD2_ID),
-        .Flush(Flush_EX),
-        .Stall(Stall_EX),
+        .Flush(Flush_ID_EX),
+        .Stall(Stall_ID_EX),
 
         .RD1_EX(RD1_EX),
         .RD2_EX(RD2_EX),
@@ -143,7 +143,7 @@ module cpu(
         .rd_EX(rd_EX),
         .AluResult_EX(AluResult_EX), 
         .WriteData_EX(WriteData_EX),
-        .Stall(Stall_EX),
+        .Stall(Stall_EX_MEM),
 
         .PCPlus4_MEM(PCPlus4_MEM), 
         .rd_MEM(rd_MEM),
@@ -210,11 +210,12 @@ module cpu(
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
         .data_stall(data_stall),
         
-        .Stall_IF(Stall_IF),
-        .Stall_ID(Stall_ID), 
-        .Stall_EX(Stall_EX),
-        .Flush_ID(Flush_ID),
-        .Flush_EX(Flush_EX),
+        .Stall_PC(Stall_PC),
+        .Stall_IF_ID(Stall_IF_ID), 
+        .Stall_ID_EX(Stall_ID_EX),
+        .Stall_EX_MEM(Stall_EX_MEM),
+        .Flush_IF_ID(Flush_IF_ID),
+        .Flush_ID_EX(Flush_ID_EX),
         .ForwardAluSrcA_EX(ForwardAluSrcA_EX),
         .ForwardAluSrcB_EX(ForwardAluSrcB_EX)
     );

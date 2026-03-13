@@ -7,36 +7,39 @@ module hazard_unit(
     input logic RegWrite_MEM, RegWrite_WB,
     input logic data_stall,
     
-    output logic Stall_IF,
-    output logic Stall_ID, Flush_ID,
-    output logic Flush_EX, Stall_EX,
+    output logic Stall_PC,
+    output logic Stall_IF_ID, Flush_IF_ID,
+    output logic Flush_ID_EX, Stall_ID_EX,
+    output logic Stall_EX_MEM,
     output logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX
 );
     always_comb begin
 
-        Stall_IF = 1'b0;
-        Stall_ID = 1'b0;
-        Stall_EX = 1'b0;
-        Flush_ID = 1'b0;
-        Flush_EX = 1'b0;
+        Stall_PC = 1'b0;
+        Stall_IF_ID = 1'b0;
+        Stall_ID_EX = 1'b0;
+        Flush_IF_ID = 1'b0;
+        Flush_ID_EX = 1'b0;
+        Stall_EX_MEM = 1'b0;
 
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
         if(data_stall) begin
-            Stall_IF = 1'b1;
-            Stall_ID = 1'b1;
-            Stall_EX = 1'b1;
+            Stall_PC = 1'b1;
+            Stall_IF_ID = 1'b1;
+            Stall_ID_EX = 1'b1;
+            Stall_EX_MEM = 1'b1;
         end
         if(PCSrc_EX != PC_NEXT) begin
-            Flush_ID = 1'b1;
-            Flush_EX = 1'b1;
+            Flush_IF_ID = 1'b1;
+            Flush_ID_EX = 1'b1;
         end
 
        if(ResultSrc_EX == DATA_MEM_RESULT && (rd_EX == rs1_ID || rd_EX == rs2_ID) && rd_EX != 5'b0) begin
-            Stall_IF = 1'b1;
-            Stall_ID = 1'b1;
-            Flush_EX = 1'b1;
+            Stall_PC = 1'b1;
+            Stall_IF_ID = 1'b1;
+            Flush_ID_EX = 1'b1;
         end
 
         
