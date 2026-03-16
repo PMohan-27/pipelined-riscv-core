@@ -4,7 +4,7 @@ module hazard_unit(
     input t_result_src ResultSrc_EX,
     input t_pcsrc PCSrc_EX,
     input logic [4:0] rd_MEM, rd_WB, rd_EX,
-    input logic RegWrite_MEM, RegWrite_WB,
+    input logic RegWrite_EX, RegWrite_MEM, RegWrite_WB, 
     input logic data_stall,
     
     output logic Stall_PC,
@@ -36,7 +36,9 @@ module hazard_unit(
             Flush_ID_EX = 1'b1;
         end
 
-       if(ResultSrc_EX == DATA_MEM_RESULT && (rd_EX == rs1_ID || rd_EX == rs2_ID) && rd_EX != 5'b0) begin
+       if(ResultSrc_EX == DATA_MEM_RESULT && 
+       (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
+       rd_EX != 5'b0 && RegWrite_EX) begin
             Stall_PC = 1'b1;
             Stall_IF_ID = 1'b1;
             Flush_ID_EX = 1'b1;

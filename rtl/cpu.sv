@@ -207,6 +207,7 @@ module cpu(
         .rd_MEM(rd_MEM),
         .rd_WB(rd_WB),
         .rd_EX(rd_EX),
+        .RegWrite_EX(EX_CONTROL_SIGNALS.RegWrite),
         .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
         .data_stall(data_stall),

@@ -20,9 +20,6 @@ module MEM_PIPELINE_STAGE(
     assign data_we = ctrl_in.DataWE;
     assign data_type = ctrl_in.DataType;
     assign data_re = (ctrl_in.ResultSrc == DATA_MEM_RESULT) && !ctrl_in.DataWE;
-    always_comb begin
-        if(data_re  || data_we) data_stall = 1'b1;
-        if(data_done) data_stall = 1'b0;
-    end
+    assign data_stall = (data_we || data_re) && !data_done; 
 
 endmodule
