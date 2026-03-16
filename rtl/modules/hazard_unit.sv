@@ -25,7 +25,7 @@ module hazard_unit(
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
-        if(data_stall) begin
+        if(data_stall && PCSrc_EX == PC_NEXT) begin
             Stall_PC = 1'b1;
             Stall_IF_ID = 1'b1;
             Stall_ID_EX = 1'b1;
