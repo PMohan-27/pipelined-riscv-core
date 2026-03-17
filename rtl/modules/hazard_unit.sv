@@ -25,23 +25,25 @@ module hazard_unit(
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
-        if(data_stall && PCSrc_EX == PC_NEXT) begin
+        if(data_stall) begin
             Stall_PC = 1'b1;
             Stall_IF_ID = 1'b1;
             Stall_ID_EX = 1'b1;
             Stall_EX_MEM = 1'b1;
         end
-        if(PCSrc_EX != PC_NEXT) begin
-            Flush_IF_ID = 1'b1;
-            Flush_ID_EX = 1'b1;
-        end
+        else begin
+            if(PCSrc_EX != PC_NEXT) begin
+                Flush_IF_ID = 1'b1;
+                Flush_ID_EX = 1'b1;
+            end
 
-       if(ResultSrc_EX == DATA_MEM_RESULT && 
-       (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
-       rd_EX != 5'b0 && RegWrite_EX) begin
-            Stall_PC = 1'b1;
-            Stall_IF_ID = 1'b1;
-            Flush_ID_EX = 1'b1;
+            if(ResultSrc_EX == DATA_MEM_RESULT && 
+               (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
+               rd_EX != 5'b0 && RegWrite_EX) begin
+                Stall_PC = 1'b1;
+                Stall_IF_ID = 1'b1;
+                Flush_ID_EX = 1'b1;
+            end
         end
 
         
