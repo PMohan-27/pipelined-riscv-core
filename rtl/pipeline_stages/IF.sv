@@ -5,7 +5,11 @@ module IF_PIPELINE_STAGE(
     input t_pcsrc PCSrc_EX,
     input logic Stall,
 
-    output logic [31:0] instruction_IF, PC_IF, PCPlus4_IF
+    output logic [31:0] instruction_IF, PC_IF, PCPlus4_IF,
+
+    input  logic [31:0] instr_data, 
+    output logic [31:0] instr_addr,
+    output logic instr_ready
 );
     logic [31:0] PC_in;
     logic [31:0] PC_out;
@@ -27,10 +31,9 @@ module IF_PIPELINE_STAGE(
         .Stall(Stall)
     );
 
-    instruction_memory instruction_memory_inst (
-        .address(PC_out),
-        .instruction(instruction_IF)
-    );
+    assign instr_addr = PC_out;
+    assign instr_ready = !Stall;
+    assign instruction_IF = instr_data;
 
     always_comb begin
         PC_IF = PC_out;

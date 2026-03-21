@@ -4,7 +4,8 @@ from cocotb.triggers import RisingEdge
 
 @cocotb.test()
 async def test(dut):
-    imem = dut.cpu_inst.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
+    imem = dut.instr_mem_inst.instruction_mem
+
     
     load_instructions(imem)
     
@@ -38,7 +39,7 @@ def dump_regs(dut, filename="dumps/regdump.txt"):
 
 def dump_instrs(dut, filename="dumps/instrdump.txt"):
     with open(filename, "w") as f:
-        imem = dut.cpu_inst.if_pipeline_stage_inst.instruction_memory_inst.instruction_mem
+        imem = dut.instr_mem_inst.instruction_mem
         for i in range(256):
             val = imem[i].value.integer
             f.write(f"imem[{i}] = {val:#010x}  ({val})\n")

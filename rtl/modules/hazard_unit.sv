@@ -6,11 +6,13 @@ module hazard_unit(
     input logic [4:0] rd_MEM, rd_WB, rd_EX,
     input logic RegWrite_EX, RegWrite_MEM, RegWrite_WB, 
     input logic data_stall,
-    
+    input logic instr_valid,
+
     output logic Stall_PC,
     output logic Stall_IF_ID, Flush_IF_ID,
     output logic Flush_ID_EX, Stall_ID_EX,
     output logic Stall_EX_MEM,
+    output logic flush_instr,
     output logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX
 );
     always_comb begin
@@ -21,11 +23,16 @@ module hazard_unit(
         Flush_IF_ID = 1'b0;
         Flush_ID_EX = 1'b0;
         Stall_EX_MEM = 1'b0;
+        flush_instr = 1'b0;
 
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
-        if(data_stall) begin
+        if(!instr_valid) begin
+            Stall_PC = 1'b1;
+            Stall_IF_ID = 1'b1;
+        end
+        else if(data_stall) begin
             Stall_PC = 1'b1;
             Stall_IF_ID = 1'b1;
             Stall_ID_EX = 1'b1;
@@ -35,6 +42,7 @@ module hazard_unit(
             if(PCSrc_EX != PC_NEXT) begin
                 Flush_IF_ID = 1'b1;
                 Flush_ID_EX = 1'b1;
+                flush_instr = 1'b1;
             end
 
             if(ResultSrc_EX == DATA_MEM_RESULT && 

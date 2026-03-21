@@ -8,6 +8,12 @@ module top(
     logic data_re;
     logic [2:0]  data_type;
 
+    logic [31:0] instr_data; 
+    logic instr_valid;
+    logic [31:0] instr_addr;
+    logic instr_ready;
+    logic flush_instr;
+
     cpu cpu_inst(
         .clk(clk),
         .rst(rst),
@@ -17,9 +23,18 @@ module top(
         .data_we(data_we),
         .data_type(data_type),
         .data_re(data_re),
-        .data_done(1'b1)
-    );
+        .data_done(1'b1),
 
+        .instr_data(instr_data), 
+        .instr_valid(1'b1),
+        .instr_addr(instr_addr),
+        .instr_ready(instr_ready),
+        .flush_instr(flush_instr)
+    );
+    instruction_memory instr_mem_inst(
+        .address(instr_addr),
+        .instruction(instr_data)
+    );
     data_mem data_memory_inst(
         .clk(clk), 
         .rst(rst), 

@@ -9,7 +9,13 @@ module cpu(
     output logic data_we,
     output logic data_re,
     output logic [2:0]  data_type,
-    input logic data_done
+    input logic data_done,
+
+    input  logic [31:0] instr_data, 
+    input  logic instr_valid,
+    output logic [31:0] instr_addr, //PC
+    output logic instr_ready,
+    output logic flush_instr
 
 );
     logic [31:0] instruction_IF, PC_IF, PCPlus4_IF;
@@ -52,6 +58,10 @@ module cpu(
         .PCTarget_EX(PCTarget_EX),
         .PCSrc_EX(PCSrc_EX),
         .Stall(Stall_PC),
+        
+        .instr_data(instr_data), 
+        .instr_addr(instr_addr),
+        .instr_ready(instr_ready),
 
         .instruction_IF(instruction_IF), 
         .PC_IF(PC_IF), 
@@ -211,7 +221,9 @@ module cpu(
         .RegWrite_MEM(MEM_CONTROL_SIGNALS.RegWrite), 
         .RegWrite_WB(WB_CONTROL_SIGNALS.RegWrite),
         .data_stall(data_stall),
-        
+        .instr_valid(instr_valid),
+
+        .flush_instr(flush_instr),
         .Stall_PC(Stall_PC),
         .Stall_IF_ID(Stall_IF_ID), 
         .Stall_ID_EX(Stall_ID_EX),
