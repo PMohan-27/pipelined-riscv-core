@@ -166,6 +166,7 @@ module control_unit(
                 ctrl_out.Jump  = JMP_NONE;
                 ctrl_out.DataWE = 1'b0;
                 ctrl_out.DataType = WORD;
+                ctrl_out.AluSrcASel = 1'b0;
                 ctrl_out.AluSrcBSel = 1'b0;
                 ctrl_out.AluOp = ALU_OP_ADD;
             end
