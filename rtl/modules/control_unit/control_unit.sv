@@ -1,6 +1,6 @@
 import alu_pkg::*;
 import control_unit_pkg::*;
-module control_unit(
+module CPU_control_unit(
     input logic [6:0] opcode, funct7,
     input logic [2:0] funct3,
 

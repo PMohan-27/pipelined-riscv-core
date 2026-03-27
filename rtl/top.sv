@@ -31,11 +31,11 @@ module top(
         .instr_ready(instr_ready),
         .flush_instr(flush_instr)
     );
-    instruction_memory instr_mem_inst(
+    CPU_instruction_memory instr_mem_inst(
         .address(instr_addr),
         .instruction(instr_data)
     );
-    data_mem data_memory_inst(
+    CPU_data_mem data_memory_inst(
         .clk(clk), 
         .rst(rst), 
         .DataType(data_type),

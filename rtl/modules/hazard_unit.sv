@@ -1,4 +1,4 @@
-module hazard_unit(
+module CPU_hazard_unit(
     input logic [4:0] rs1_ID, rs2_ID,
     input logic [4:0] rs1_EX, rs2_EX,
     input t_result_src ResultSrc_EX,

@@ -1,5 +1,5 @@
 import alu_pkg::*;
-module ALU(
+module CPU_ALU(
     input  t_alu_op AluOp,
     input  logic [31:0] SrcA, SrcB,
     output logic ZeroFlag, OverflowFlag, NegativeFlag, CarryFlag,

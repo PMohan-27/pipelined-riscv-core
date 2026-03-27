@@ -1,4 +1,4 @@
-module ID_PIPELINE_STAGE(
+module CPU_ID_PIPELINE_STAGE(
     input logic clk, rst,
     input logic [31:0] instruction_ID,
     input logic [4:0]  rd_WB,
@@ -35,14 +35,14 @@ module ID_PIPELINE_STAGE(
         ctrl_out.AluOp = control_signals.AluOp;
     end
 
-    control_unit control_unit_inst(
+    CPU_control_unit control_unit_inst(
         .opcode(opcode), 
         .funct7(funct7),
         .funct3(funct3),
         .ctrl_out(control_signals)
     );
 
-    reg_file register_file_inst(
+    CPU_reg_file register_file_inst(
         .clk (clk),
         .rst (rst),
         .A1  (rs1_ID),
@@ -54,7 +54,7 @@ module ID_PIPELINE_STAGE(
         .RD2 (RD2_ID)
     );
 
-    imm_gen imm_gen_inst(
+    CPU_imm_gen imm_gen_inst(
         .instruction(instruction_ID),
         .ImmSel(control_signals.ImmSel),
         .ImmExt(ImmExt_ID)

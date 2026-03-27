@@ -1,4 +1,4 @@
-module IF_ID_PIPELINE_REG(
+module CPU_IF_ID_PIPELINE_REG(
     input logic clk, rst,
     input logic [31:0] instruction_IF,
     input logic [31:0] PC_IF,

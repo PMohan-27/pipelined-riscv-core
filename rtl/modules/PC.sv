@@ -1,4 +1,4 @@
-module PC(
+module CPU_PC(
     input  logic clk, rst,
     input  logic [31:0] PC_in,
     output logic [31:0] PC_out,

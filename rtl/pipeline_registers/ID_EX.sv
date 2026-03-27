@@ -1,5 +1,5 @@
 import alu_pkg::*;
-module ID_EX_PIPELINE_REG (
+module CPU_ID_EX_PIPELINE_REG (
     input logic clk, rst,
     input logic [4:0] rs1_ID, rs2_ID, rd_ID,
     input logic [31:0] PC_ID, ImmExt_ID, PCPlus4_ID,

@@ -1,5 +1,5 @@
 import imm_gen_pkg::*;
-module imm_gen(
+module CPU_imm_gen(
     input  logic [31:0] instruction,
     input  t_imm ImmSel,
     output logic  [31:0] ImmExt

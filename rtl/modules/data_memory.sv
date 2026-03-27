@@ -1,4 +1,4 @@
-module data_mem(
+module CPU_data_mem(
     input logic clk, rst, 
     input  t_data_type DataType,
     input  logic DataWE,

@@ -1,5 +1,5 @@
 import control_unit_pkg::*;
-module IF_PIPELINE_STAGE(
+module CPU_IF_PIPELINE_STAGE(
     input logic clk, rst,
     input logic [31:0] AluResult_EX, PCTarget_EX,
     input t_pcsrc PCSrc_EX,
@@ -23,7 +23,7 @@ module IF_PIPELINE_STAGE(
         endcase
     end
 
-    PC pc_inst (
+    CPU_PC pc_inst (
         .clk(clk),
         .rst(rst),
         .PC_in(PC_in),

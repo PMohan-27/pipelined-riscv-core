@@ -1,4 +1,4 @@
-module EX_MEM_PIPELINE_REG(
+module CPU_EX_MEM_PIPELINE_REG(
     input logic clk, rst,
     input logic [31:0] PCPlus4_EX,
     input logic [4:0] rd_EX,

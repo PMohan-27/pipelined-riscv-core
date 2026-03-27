@@ -1,5 +1,5 @@
 import control_unit_pkg::*;
-module EX_PIPELINE_STAGE(
+module CPU_EX_PIPELINE_STAGE(
     input logic [31:0] RD1_EX, RD2_EX,
     input logic [31:0] PC_EX, ImmExt_EX,
     input logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX,
@@ -11,7 +11,7 @@ module EX_PIPELINE_STAGE(
     control_signals_if.EX_STAGE_IN ctrl_in
 );
     logic ZeroFlag, OverflowFlag, NegativeFlag, CarryFlag;
-    pc_select pc_select_inst(
+    CPU_pc_select pc_select_inst(
         .ZeroFlag(ZeroFlag), 
         .OverflowFlag(OverflowFlag),
         .NegativeFlag(NegativeFlag), 
@@ -46,7 +46,7 @@ module EX_PIPELINE_STAGE(
         end
     end
 
-    ALU ALU_inst(
+    CPU_ALU ALU_inst(
         .AluOp(ctrl_in.AluOp),
         .SrcA(AluSrcA), 
         .SrcB(AluSrcB),

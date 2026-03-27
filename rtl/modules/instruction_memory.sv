@@ -1,4 +1,4 @@
-module instruction_memory ( 
+module CPU_instruction_memory ( 
     input  logic [31:0] address,
     output logic [31:0] instruction 
 );

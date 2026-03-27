@@ -1,5 +1,5 @@
 import control_unit_pkg::*;
-module pc_select(
+module CPU_pc_select(
     input logic ZeroFlag, OverflowFlag, NegativeFlag, CarryFlag,
     input t_jump Jump_EX, 
     input t_branch Branch_EX,

@@ -1,4 +1,4 @@
-module MEM_PIPELINE_STAGE(
+module CPU_MEM_PIPELINE_STAGE(
     input logic [31:0] AluResult_MEM, WriteData_MEM,
     input  logic [31:0] data_rdata,
     input logic data_done,

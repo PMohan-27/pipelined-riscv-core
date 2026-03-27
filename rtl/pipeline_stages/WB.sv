@@ -1,4 +1,4 @@
-module WB_PIPELINE_STAGE(
+module CPU_WB_PIPELINE_STAGE(
     input logic [31:0] AluResult_WB, ReadData_WB, PCPlus4_WB,
 
     output logic [31:0] Result_WB,

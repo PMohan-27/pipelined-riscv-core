@@ -51,7 +51,7 @@ module cpu(
     logic Flush_ID_EX, Flush_IF_ID, Stall_PC, Stall_IF_ID, Stall_ID_EX, Stall_EX_MEM;
     logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
     logic data_stall;
-    IF_PIPELINE_STAGE if_pipeline_stage_inst(
+    CPU_IF_PIPELINE_STAGE if_pipeline_stage_inst(
         .clk(clk), 
         .rst(rst),
         .AluResult_EX(AluResult_EX), 
@@ -68,7 +68,7 @@ module cpu(
         .PCPlus4_IF(PCPlus4_IF)
     );
 
-    IF_ID_PIPELINE_REG if_id_pipeline_reg_inst(
+    CPU_IF_ID_PIPELINE_REG if_id_pipeline_reg_inst(
         .clk(clk),
         .rst(rst),
         .instruction_IF(instruction_IF),
@@ -82,7 +82,7 @@ module cpu(
         .PCPlus4_ID(PCPlus4_ID)
     );
 
-    ID_PIPELINE_STAGE id_pipeline_stage_inst(
+    CPU_ID_PIPELINE_STAGE id_pipeline_stage_inst(
         .clk(clk),
         .rst(rst),
         .instruction_ID(instruction_ID),
@@ -100,7 +100,7 @@ module cpu(
         .ctrl_out(ID_CONTROL_SIGNALS)
     );
 
-    ID_EX_PIPELINE_REG id_ex_pipeline_reg_inst(
+    CPU_ID_EX_PIPELINE_REG id_ex_pipeline_reg_inst(
         .clk(clk),
         .rst(rst),
         .rs1_ID(rs1_ID),
@@ -128,7 +128,7 @@ module cpu(
     );
     
 
-    EX_PIPELINE_STAGE ex_pipeline_stage_inst(
+    CPU_EX_PIPELINE_STAGE ex_pipeline_stage_inst(
         .RD1_EX(RD1_EX), 
         .RD2_EX(RD2_EX),
         .PC_EX(PC_EX), 
@@ -146,7 +146,7 @@ module cpu(
         .ctrl_in(EX_CONTROL_SIGNALS)
     );
 
-    EX_MEM_PIPELINE_REG ex_mem_pipeline_reg_inst(
+    CPU_EX_MEM_PIPELINE_REG ex_mem_pipeline_reg_inst(
         .clk(clk), 
         .rst(rst),
         .PCPlus4_EX(PCPlus4_EX), 
@@ -164,7 +164,7 @@ module cpu(
         .ctrl_out(MEM_CONTROL_SIGNALS)
     );
 
-    MEM_PIPELINE_STAGE mem_pipeline_stage_inst(
+    CPU_MEM_PIPELINE_STAGE mem_pipeline_stage_inst(
         .AluResult_MEM(AluResult_MEM),
         .WriteData_MEM(WriteData_MEM),
         .data_rdata(data_rdata),
@@ -180,7 +180,7 @@ module cpu(
         .ctrl_in(MEM_CONTROL_SIGNALS)
     );
 
-    MEM_WB_PIPELINE_REG mem_wb_pipeline_reg_inst(
+    CPU_MEM_WB_PIPELINE_REG mem_wb_pipeline_reg_inst(
         .clk(clk), 
         .rst(rst),
         .AluResult_MEM(AluResult_MEM), 
@@ -197,7 +197,7 @@ module cpu(
         .ctrl_out(WB_CONTROL_SIGNALS)
     );
 
-    WB_PIPELINE_STAGE wb_pipeline_stage_inst(
+    CPU_WB_PIPELINE_STAGE wb_pipeline_stage_inst(
         .AluResult_WB(AluResult_WB), 
         .ReadData_WB(ReadData_WB), 
         .PCPlus4_WB(PCPlus4_WB),
@@ -207,7 +207,7 @@ module cpu(
         .ctrl_in(WB_CONTROL_SIGNALS)
     );
 
-    hazard_unit hazard_unit_inst(
+    CPU_hazard_unit hazard_unit_inst(
         .rs1_ID(rs1_ID),
         .rs2_ID(rs2_ID),
         .rs1_EX(rs1_EX), 

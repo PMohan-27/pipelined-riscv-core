@@ -1,4 +1,4 @@
-module MEM_WB_PIPELINE_REG(
+module CPU_MEM_WB_PIPELINE_REG(
     input logic clk, rst,
     input logic [31:0] AluResult_MEM, ReadData_MEM,
     input logic [4:0] rd_MEM,
