@@ -1,5 +1,7 @@
 import control_unit_pkg::*;
-module CPU_IF_PIPELINE_STAGE(
+module CPU_IF_PIPELINE_STAGE
+#(parameter logic[31:0] PC_START = 0)
+(
     input logic clk, rst,
     input logic [31:0] AluResult_EX, PCTarget_EX,
     input t_pcsrc PCSrc_EX,
@@ -23,7 +25,7 @@ module CPU_IF_PIPELINE_STAGE(
         endcase
     end
 
-    CPU_PC pc_inst (
+    CPU_PC #(.PC_START(PC_START)) pc_inst (
         .clk(clk),
         .rst(rst),
         .PC_in(PC_in),
@@ -32,7 +34,7 @@ module CPU_IF_PIPELINE_STAGE(
     );
 
     assign instr_addr = PC_out;
-    assign instr_ready = !Stall;
+    assign instr_ready = PC_out != PC_in;
     assign instruction_IF = instr_data;
 
     always_comb begin

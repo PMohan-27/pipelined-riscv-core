@@ -14,7 +14,7 @@ module top(
     logic instr_ready;
     logic flush_instr;
 
-    cpu cpu_inst(
+    cpu #(.PC_START('0)) cpu_inst(
         .clk(clk),
         .rst(rst),
         .data_rdata(data_rdata),

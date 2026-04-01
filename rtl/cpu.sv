@@ -1,4 +1,6 @@
-module cpu(
+module cpu
+#(parameter logic[31:0] PC_START = 0)
+(
     input logic clk,
     input logic rst,
 
@@ -51,7 +53,7 @@ module cpu(
     logic Flush_ID_EX, Flush_IF_ID, Stall_PC, Stall_IF_ID, Stall_ID_EX, Stall_EX_MEM;
     logic [1:0] ForwardAluSrcA_EX, ForwardAluSrcB_EX;
     logic data_stall;
-    CPU_IF_PIPELINE_STAGE if_pipeline_stage_inst(
+    CPU_IF_PIPELINE_STAGE #(.PC_START(PC_START)) if_pipeline_stage_inst(
         .clk(clk), 
         .rst(rst),
         .AluResult_EX(AluResult_EX), 
