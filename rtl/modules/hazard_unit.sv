@@ -38,6 +38,7 @@ module CPU_hazard_unit(
             Stall_ID_EX = 1'b1;
             Stall_EX_MEM = 1'b1;
         end
+        
         else begin
             if(PCSrc_EX != PC_NEXT) begin
                 Flush_IF_ID = 1'b1;

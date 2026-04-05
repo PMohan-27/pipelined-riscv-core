@@ -6,8 +6,8 @@ module CPU_MEM_PIPELINE_STAGE(
     output logic [31:0] ReadData_MEM,
     output logic [31:0] data_addr,
     output logic [31:0] data_wdata,
-    output logic        data_we,
-    output logic [2:0]  data_type, 
+    output logic data_we,
+    output logic [2:0] data_type, 
     output logic data_re,
     output logic data_stall,
 
