@@ -55,7 +55,13 @@ module CPU_hazard_unit(
             end
         end
 
-        
+        if(RegWrite_EX && rd_EX != 5'b0 && 
+            (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
+            ResultSrc_EX == ALU_RESULT) begin
+            Stall_PC = 1'b1;
+            Stall_IF_ID = 1'b1;
+            Flush_ID_EX = 1'b1;
+        end
         
         if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs1_EX) begin
             ForwardAluSrcA_EX = 2'b10;
