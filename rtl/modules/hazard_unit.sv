@@ -28,39 +28,38 @@ module CPU_hazard_unit(
         ForwardAluSrcA_EX = 2'b00;
         ForwardAluSrcB_EX = 2'b00;
 
-        if(!instr_valid) begin
-            Stall_PC = 1'b1;
-            Stall_IF_ID = 1'b1;
+        if (PCSrc_EX != PC_NEXT) begin
+            Flush_IF_ID = 1'b1;
+            Flush_ID_EX = 1'b1;
+            flush_instr = 1'b1;
         end
-        else if(data_stall) begin
+
+        if (data_stall) begin
             Stall_PC = 1'b1;
             Stall_IF_ID = 1'b1;
             Stall_ID_EX = 1'b1;
             Stall_EX_MEM = 1'b1;
-        end
-        
-        else begin
-            if(PCSrc_EX != PC_NEXT) begin
-                Flush_IF_ID = 1'b1;
-                Flush_ID_EX = 1'b1;
-                flush_instr = 1'b1;
+            
+            if (PCSrc_EX == PC_NEXT) begin
+                Flush_ID_EX = 1'b0; 
             end
+        end 
 
-            if(ResultSrc_EX == DATA_MEM_RESULT && 
-               (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
-               rd_EX != 5'b0 && RegWrite_EX) begin
+        else if (!instr_valid) begin
+            Stall_PC = 1'b1;
+            Stall_IF_ID = 1'b1;
+            Flush_ID_EX = 1'b1;
+        end 
+
+        else begin
+            if ((ResultSrc_EX == DATA_MEM_RESULT || ResultSrc_EX == ALU_RESULT) && 
+                (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
+                rd_EX != 5'b0 && RegWrite_EX) begin
+                
                 Stall_PC = 1'b1;
                 Stall_IF_ID = 1'b1;
                 Flush_ID_EX = 1'b1;
             end
-        end
-
-        if(RegWrite_EX && rd_EX != 5'b0 && 
-            (rd_EX == rs1_ID || rd_EX == rs2_ID) &&
-            ResultSrc_EX == ALU_RESULT) begin
-            Stall_PC = 1'b1;
-            Stall_IF_ID = 1'b1;
-            Flush_ID_EX = 1'b1;
         end
         
         if(RegWrite_MEM && rd_MEM != 5'b0 && rd_MEM == rs1_EX) begin
